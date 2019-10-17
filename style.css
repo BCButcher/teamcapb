@@ -1,0 +1,36 @@
+#pkBallTop {
+    height: 45vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+
+#pkBallMid {
+    padding-bottom: 40px;
+    width: 100%;
+    position: relative;
+    top: 55%;
+}
+
+#pkBallCircleBack {
+    width: 200px;
+    height: 200px;
+    border-radius: 10rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    bottom: 50%;
+    margin-bottom: -70px;
+}
+
+#startGame {
+    width: 180px;
+    height: 180px;
+    border-radius: 10rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -90px;
+    bottom: 50%;
+    margin-bottom: -60px;
+    transform: rotateZ(45deg);
+}
