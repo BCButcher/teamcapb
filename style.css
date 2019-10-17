@@ -42,6 +42,7 @@
 }
 
 #playerCarousel {
+    box-shadow: 5px;
 
 }
 
@@ -127,10 +128,6 @@
 <div id="compHP">
 <div id="compHPbar"> 
 <p id="compPkmnName">
-
 <div id="compSprite">
 <img id="compSpriteImg">
-
-
-
 */
