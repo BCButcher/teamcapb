@@ -28,7 +28,7 @@
 /* END Landing page */
 
 /* START Pokemon Selector */
-#playerCarousel {
+#teamSelection {
     background-color: lightgray;
     border-radius: 25px;
     border: 5px solid darkgray;
@@ -38,7 +38,14 @@
 #choosePokemonText {
     margin: 10px;
     font-size: 25px;
+    text-align: center;
 }
+
+#playerCarousel {
+
+}
+
+
 /* END Pokemon Selector */
 
 
