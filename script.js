@@ -1,39 +1,64 @@
-// jQuery
+var computerTeam = [];
+var playerTeam = [];
 
-$(document).ready(function(){
+// Chooses a random Pokemon from the API, and creates an object with relevant data
+function randomPokemon(teamName) {
+    var pokeID = Math.ceil(Math.random() * 151);
+    var queryURL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`
 
-
-    $('.carousel').carousel();
-
-    var queryURL = "https://pokeapi.co/api/v2/pokemon/charizard";
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        console.log(response);
-        console.log(response.name);
-        console.log(response.stats[3]);
-        console.log(response.stats[3].stat.name);
-        console.log(response.sprites.front_default);
-        console.log(response.sprites.back_default);
-        $("#charizardPic").attr("src", response.sprites.back_default);
-        $(".testSpriteImg").attr("src", response.sprites.back_default);
+    return new Promise( function(resolve,reject){
+        $.get(queryURL).then(function (response) {
+            var pokeData = {
+                name: response.name,
+                hp: response.stats[5].base_stat,
+                hpCurrent: response.stats[5].base_stat,
+                attack: response.stats[4].base_stat,
+                defense: response.stats[3].base_stat,
+                status: "ready",
+                spriteFront: response.sprites.front_default,
+                spriteBack: response.sprites.back_default
+            }
+            // Writes the object to the passed array "teamName"
+            resolve();
+            teamName.push(pokeData);
+        
+        });
     });
-     // Function generate team
+};
+
+// PROMISE
+// ASYNC
+// GENERATOR
 
 
-    // Set background image equal to pokeball sprite from API call
-    $.ajax({
-        url: "https://pokeapi.co/api/v2/item/poke-ball/",
-        method: "GET"
-    }).then(function(response) {
-        var bgImage = response.sprites.default;
-        $("body").css('background-image', `url( ${bgImage} )` );
+// Iterate through this loop until there are 6 pokemon in the array "team"
+function generateTeam(team) {
+    // create a promise so that we only continue when we have the actual result 
+    // from the API call
+    var waitPromise = [];   
+    for (var i = 0; i < 6; i++) {
+        waitPromise[i] = randomPokemon(team);
+    }
+
+    return Promise.all(waitPromise);
+};
+
+// function selectActive()
+
+// Creates two teams after the document is ready
+// $('document').ready(function () {
+
+    generateTeam(playerTeam).then( function(){
+        // now deal with playerTeam stuff
+        console.log( `Player Team 0: ${playerTeam[0].name}`, playerTeam );
     });
+    
+    generateTeam(computerTeam).then( function(){
+        // deal with computerTeam ONLY when it's ready
+        console.log( `Computer team 0: ${computerTeam[0].name}`, computerTeam );
 
-});
-
-
-
-
+    })
+    
+    // console.log(computerTeam[0]);
+   // console.log(activeComputerPokemon);
+// });
