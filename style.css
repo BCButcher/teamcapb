@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 *{
+=======
+* {
+>>>>>>> 317fc297be5e65159a2bf757d0e5f7741800e037
     margin: 0;
     padding: 0;
 }
 
+<<<<<<< HEAD
 
 
 /*{
@@ -31,3 +36,125 @@ button {
     background-repeat: no-repeat; 
     background-size: auto; 
 }
+=======
+#containAll{
+    max-width: 700px;
+}
+
+/* START Landing page */
+#landingPage {
+    background-color: lightgray;
+    border-radius: 25px;
+    border: 5px solid darkgray;
+    margin-top: 25px;
+}
+
+#title {
+    text-align: center;
+    margin: 0;
+}
+
+#startBattleBtn {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* END Landing page */
+
+/* START Pokemon Selector */
+#playerCarousel {
+    background-color: lightgray;
+    border-radius: 25px;
+    border: 5px solid darkgray;
+    margin-top: 25px;
+}
+
+#choosePokemonText {
+    margin: 10px;
+    font-size: 25px;
+}
+/* END Pokemon Selector */
+
+
+/* START Battle Container */
+#battleContainer {
+    background-color: lightgray;
+    border-radius: 25px;
+    border: 5px solid darkgray;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+/* Computer Battle Boxes */
+#compHP {
+    border: 2px solid black;
+}
+
+#compHPbar {
+    background-color: red;
+}
+
+#compPkmnName {
+
+}
+
+#compSprite {
+
+}
+
+#compSpriteImg {
+
+}
+
+
+/* Player  Battle Boxes */
+#playerHP {
+    border: 2px solid black;
+}
+
+#playerHPbar {
+    background-color: red;
+}
+
+#playerPkmnName {
+    
+}
+
+#playerSprite {
+
+}
+
+#playerSpriteImg {
+
+}
+
+/* Battle Buttons */
+
+#battleButtons {
+    margin-top: 5px;
+}
+
+#attackBtn {
+
+}
+
+#switchBtn {
+
+}
+
+#runBtn {
+
+}
+
+/* END Battle Container */
+
+
+
+/* 
+<div id="compHP">
+<div id="compHPbar"> 
+<p id="compPkmnName">
+<div id="compSprite">
+<img id="compSpriteImg">
+*/
+>>>>>>> 317fc297be5e65159a2bf757d0e5f7741800e037
