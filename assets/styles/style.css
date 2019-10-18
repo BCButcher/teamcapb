@@ -83,17 +83,29 @@
 /* END Landing page */
 
 /* START Pokemon Selector */
-#playerCarousel {
+
+#teamSelection {
     background-color: lightgray;
     border-radius: 25px;
     border: 5px solid darkgray;
     margin-top: 25px;
 }
 
+#playerCarousel {
+    height: 250px;
+}
+
 #choosePokemonText {
     margin: 10px;
     font-size: 25px;
 }
+
+#pokemonSelectBtn {
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+
 /* END Pokemon Selector */
 
 

@@ -4,6 +4,8 @@ var playerTeam = [];
 var activePlayerPokemon;
 var activeComputerPokemon;
 const genericCarouselID = "playerPkmn";
+var activeComputerPokemon = 6;
+var activePlayerPokemon = 6;
 
 function randomPokemon(teamName) {
     var pokeID = Math.ceil(Math.random() * 151);
@@ -52,12 +54,6 @@ console.log("Opponent Team:", computerTeam);
 $(document).ready(function(){
     
     $("#startGame").click(function () {
-    $('.carousel').carousel();
-        $.each($(".carousel-item"), function(i) {
-            let carouselID = '#' + genericCarouselID+i;
-            console.log(carouselID);
-            $(carouselID).attr("src", playerTeam[i].spriteFront);
-        })
     // Set background image equal to pokeball sprite from API call
     // $.ajax({
     //     url: "https://pokeapi.co/api/v2/item/poke-ball/",
@@ -73,11 +69,19 @@ $(document).ready(function(){
         $("#pkBallCircleBack").addClass("slideOutBottom");
         $("#startGame").addClass("slideOutBottom");
         setTimeout(function () {
+            $('.carousel').carousel();
+            $.each($(".carousel-item"), function(i) {
+                let carouselID = '#' + genericCarouselID+i;
+                console.log(carouselID);
+                $(carouselID).attr("src", playerTeam[i].spriteFront);
+                
+            })
+           
             $("#landingPage").css("display", "none");
-            $("#teamSelection").css("display", "block");
+            $("#teamSelection").css("visibility", "visible");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
-        }, 700)
+            
+        }, 700);
     })
 });
-

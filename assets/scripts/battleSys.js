@@ -1,9 +1,7 @@
-var numActiveCompPokemon = 6;
-var numActivePlayerPokemon = 6;
 var critMultiplier = 0.25;
 
 function attackOpponent(attacker, defender) {
-    if ((attacker.status == "fainted")||(defender.status == "fainted")) {
+    if ((attacker.status == "fainted") || (defender.status == "fainted")) {
         console.log(`This Pokemon is unable to continue battling! Please switch to another Pokemon!`);
         return;
     }
@@ -15,7 +13,7 @@ function attackOpponent(attacker, defender) {
     }
 
     // Total damage has a +/- 15% variability
-    let damage = Math.round((attacker.attack + (attacker.attack*critMultiplier*isCrit) - defender.defense) * ((Math.random() * 0.30) + 0.85));
+    let damage = Math.round((attacker.attack + (attacker.attack * critMultiplier * isCrit) - defender.defense) * ((Math.random() * 0.30) + 0.85));
     if (damage <= 0) {
         damage = 1;
     }
@@ -28,7 +26,7 @@ function attackOpponent(attacker, defender) {
         if (defender == activeComputerPokemon) {
             if (numActiveComputerPokemon > 0) {
                 numActiveCompPokemon--;
-                switchCompActivePokemon(computerTeam, Math.floor(Math.random()*6), activeComputerPokemon);
+                switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
             } else {
                 console.log(`Computer has no usable Pokemon! You Win!`);
             }
@@ -47,6 +45,14 @@ function attackOpponent(attacker, defender) {
         }
     }
 }
+
+$('#pokemonSelectBtn').click(function () {
+    // set ActivePlayerPokemon to be equal to carousel-item active
+    let currentCarouselID;
+    currentCarouselID = $(".carousel > .active").attr('id');
+    currentCarouselID = Number(currentCarouselID[10]);
+    activePlayerPokemon = playerTeam[currentCarouselID];
+})
 
 function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
     if (team[pokemonIdx].status != "fainted") {
@@ -68,3 +74,15 @@ function switchPlayerActivePokemon(pokemonIdx) {
         console.log(`Cannot switch! This Pokemon has fainted!`)
     }
 }
+
+$('#attackBtn').on('click', function () {
+    console.log("button clicked");
+    attackOpponent(activePlayerPokemon, activeComputerPokemon);
+
+})
+
+$('#switchBtn').on('click', function () {
+    console.log("button clicked");
+
+
+})
