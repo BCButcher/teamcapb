@@ -1,0 +1,71 @@
+#pkBallTop {
+    height: 45vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+
+#pkBallMid {
+    padding-bottom: 40px;
+    width: 100%;
+    position: relative;
+    top: 55%;
+}
+
+#pkBallCircleBack {
+    width: 200px;
+    height: 200px;
+    border-radius: 10rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -100px;
+    bottom: 42%;
+}
+
+#startGame {
+    width: 180px;
+    height: 180px;
+    border-radius: 10rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -90px;
+    bottom: 43%;
+    transform: rotateZ(45deg);
+}
+
+#landingPage {
+    position: relative;
+    top: 0;
+}
+
+.slideOut {
+    animation-name: slide-out;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.50s;
+}
+
+.slideOutBottom {
+    animation-name: slide-out-bottom;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.70s;
+}
+
+@keyframes slide-out {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -100%;
+    }
+}
+
+@keyframes slide-out-bottom {
+    0% {
+        bottom: 43%;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
