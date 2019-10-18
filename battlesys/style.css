@@ -23,6 +23,7 @@
 }
 
 #startGame {
+    font-size: 18pt;
     width: 180px;
     height: 180px;
     border-radius: 10rem;
