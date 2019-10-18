@@ -8,22 +8,77 @@
 }
 
 /* START Landing page */
+#pkBallTop {
+    height: 45vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+
+#pkBallMid {
+    padding-bottom: 40px;
+    width: 100%;
+    position: relative;
+    top: 55%;
+}
+
+#pkBallCircleBack {
+    width: 200px;
+    height: 200px;
+    border-radius: 10rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -100px;
+    bottom: 42%;
+}
+
+#startGame {
+    font-size: 18pt;
+    width: 180px;
+    height: 180px;
+    border-radius: 10rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -90px;
+    bottom: 43%;
+    transform: rotateZ(45deg);
+}
+
 #landingPage {
-    background-color: lightgray;
-    border-radius: 25px;
-    border: 5px solid darkgray;
-    margin-top: 25px;
+    position: relative;
+    top: 0;
 }
 
-#title {
-    text-align: center;
-    margin: 0;
+.slideOut {
+    animation-name: slide-out;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.50s;
 }
 
-#startBattleBtn {
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.slideOutBottom {
+    animation-name: slide-out-bottom;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.70s;
+}
+
+@keyframes slide-out {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -100%;
+    }
+}
+
+@keyframes slide-out-bottom {
+    0% {
+        bottom: 43%;
+    }
+    100% {
+        bottom: 100%;
+    }
 }
 /* END Landing page */
 
