@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/*{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('http://clickwallpapers.com/1080p/pokemon-red-wallpapers-free-On-Wallpaper-1080p-HD.jpg');
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+*/
+
+button {
+        display: block;
+        margin: auto;
+    }
+
+
+
+.col{
+    height: 100vh;
+    border: solid red 3px;
+    background-image: url('http://eskipaper.com/images/pokemon-ball-1.jpg');
+    background-position: center; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: auto; 
+}
