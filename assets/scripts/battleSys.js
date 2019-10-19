@@ -25,7 +25,7 @@ function attackOpponent(attacker, defender) {
         console.log(`${defender.name} took ${damage} damage! It has ${defender.status}!`);
         if (defender == activeComputerPokemon) {
             if (numActiveComputerPokemon > 0) {
-                numActiveCompPokemon--;
+                numActiveComputerPokemon--;
                 switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
             } else {
                 console.log(`Computer has no usable Pokemon! You Win!`);
@@ -48,10 +48,21 @@ function attackOpponent(attacker, defender) {
 
 $('#pokemonSelectBtn').click(function () {
     // set ActivePlayerPokemon to be equal to carousel-item active
-    let currentCarouselID;
-    currentCarouselID = $(".carousel > .active").attr('id');
-    currentCarouselID = Number(currentCarouselID[10]);
-    activePlayerPokemon = playerTeam[currentCarouselID];
+
+})
+
+$('#playerCarousel').mousedown(function () {
+    setTimeout(function() {
+        let currentCarousel = $(".carousel > .active");
+        let carouselIndex = $('.carousel-item').index(currentCarousel);
+        switchPlayerActivePokemon(carouselIndex);
+        $('.card-content').html(`
+        <span class="card-title">${activePlayerPokemon.name}</span>
+        <p>HP: ${activePlayerPokemon.hp}</p>
+        <p>ATK: ${activePlayerPokemon.attack}</p>
+        <p>DEF: ${activePlayerPokemon.defense}</p>
+        `);
+    }, 1000)
 })
 
 function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
