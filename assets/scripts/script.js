@@ -8,11 +8,11 @@ var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 
 function randomPokemon(teamName) {
-    var pokeID = Math.ceil(Math.random() * 151);
-    var queryURL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`
-    var isShiny = (1 == Math.ceil(Math.random() * 8192));
-    var frontSpriteUrl;
-    var backSpriteUrl;
+    let pokeID = Math.ceil(Math.random() * 151);
+    let queryURL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`
+    let isShiny = (1 == Math.ceil(Math.random() * 8192));
+    let frontSpriteUrl;
+    let backSpriteUrl;
 
     $.get(queryURL).then(function (response) {
         // Totally unnecessary but now we can have shinies in battle
@@ -26,13 +26,16 @@ function randomPokemon(teamName) {
         }
 
         let pkmnName = response.name;
+        let pkmnHP = calcHP(response.stats[5].base_stat);
+        let pkmnAtk = calcStat(response.stats[4].base_stat);
+        let pkmnDef = calcStat(response.stats[3].base_stat);
 
         var pokeData = {
             name: pkmnName[0].toUpperCase() + pkmnName.slice(1),
-            hp: response.stats[5].base_stat,
-            hpCurrent: response.stats[5].base_stat,
-            attack: response.stats[4].base_stat,
-            defense: response.stats[3].base_stat,
+            hp: pkmnHP,
+            hpCurrent: pkmnHP,
+            attack: pkmnAtk,
+            defense: pkmnDef,
             status: "ready",
             spriteFront: frontSpriteUrl,
             spriteBack: backSpriteUrl
@@ -46,6 +49,16 @@ function generateTeam(team) {
         randomPokemon(team);
     }
 };
+
+function calcHP(baseHP) {
+    let newHP = (((baseHP*2)+(Math.sqrt(125)/4))/2)+50+10
+    return Math.round(newHP)
+}
+
+function calcStat(baseStat) {
+    let newStat = (((baseStat*2)+(Math.sqrt(125)/4))/2)+5
+    return Math.round(newStat)
+}
 
 generateTeam(playerTeam);
 generateTeam(computerTeam);
