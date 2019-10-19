@@ -58,7 +58,7 @@ $('#playerCarousel').mousedown(function () {
         switchPlayerActivePokemon(carouselIndex);
         $('.card-content').html(`
         <span class="card-title">${activePlayerPokemon.name}</span>
-        <p>HP: ${activePlayerPokemon.hp}</p>
+        <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
         <p>DEF: ${activePlayerPokemon.defense}</p>
         `);
