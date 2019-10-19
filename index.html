@@ -53,9 +53,11 @@
         </div>
 
         <div id="battleContainer" style="display: none;">
-            <div id="compHP">
-                <div id="compHPbar">100%</div>
+            <div id="compHP"></div>
+            <div class="progress">
+                <div class="determinate" id="compHPbar"></div>
             </div>
+
             <p id="compPkmnName">compPkmnName</p>
             <div id="compSprite">
                 <img id="compSpriteImg" src="">
@@ -68,9 +70,10 @@
                 <img id="playerSpriteImg" src="">
             </div>
             <p id="playerPkmnName">playerPkmnName</p>
-            <div id="playerHP">
-                <div id="playerHPbar">100%</div>
+            <div class="progress">
+                <div class="determinate" id="playerHPbar"></div>
             </div>
+            <div id="playerHP"></div>
 
             <div id="battleButtons">
                 <a id="attackBtn" class="waves-effect waves-light btn">Attack</a>
