@@ -80,7 +80,7 @@ $(document).ready(function(){
             })
            
             $("#landingPage").css("display", "none");
-            $("#teamSelection").css("visibility", "visible");
+            $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
             
