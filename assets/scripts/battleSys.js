@@ -48,6 +48,15 @@ function attackOpponent(attacker, defender) {
 
 $('#pokemonSelectBtn').click(function () {
     $("#teamSelection").removeClass("fadeIn").addClass("slideOut");
+    setActivePlayerPokemonInfo(activePlayerPokemon);
+    setActiveComputerPokemonInfo(activeComputerPokemon);
+
+    setTimeout(function() {
+        $("#teamSelection").css("display", "none");
+        $("#battleContainer").css("display", "block");
+        $("#playerSpriteImg").addClass("slideInFromLeft");
+        $("#compSpriteImg").addClass("slideInFromRight");
+    }, 700)
 
 })
 
@@ -84,6 +93,18 @@ function switchPlayerActivePokemon(pokemonIdx) {
     } else {
         console.log(`Cannot switch! This Pokemon has fainted!`)
     }
+}
+
+function setActivePlayerPokemonInfo(pokemonInfo) {
+    $("#playerPkmnName").text(pokemonInfo.name);
+    $("#playerHPbar").text(`${pokemonInfo.hpCurrent}/${pokemonInfo.hp}`);
+    $("#playerSpriteImg").attr("src", pokemonInfo.spriteBack);
+}
+
+function setActiveComputerPokemonInfo(pokemonInfo) {
+    $("#compPkmnName").text(pokemonInfo.name);
+    $("#compHPbar").text(`${pokemonInfo.hpCurrent}/${pokemonInfo.hp}`);
+    $("#compSpriteImg").attr("src", pokemonInfo.spriteFront);
 }
 
 $('#attackBtn').on('click', function () {
