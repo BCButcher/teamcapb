@@ -47,10 +47,11 @@ function attackOpponent(attacker, defender) {
 }
 
 $('#pokemonSelectBtn').click(function () {
-    // set ActivePlayerPokemon to be equal to carousel-item active
+    
 
 })
 
+// set ActivePlayerPokemon to be equal to carousel-item active
 $('#playerCarousel').mousedown(function () {
     setTimeout(function() {
         let currentCarousel = $(".carousel > .active");
@@ -80,7 +81,6 @@ function switchPlayerActivePokemon(pokemonIdx) {
         console.log(`You don't have any usable Pokemon!`)
     } else if (playerTeam[pokemonIdx].status != "fainted") {
         activePlayerPokemon = playerTeam[pokemonIdx];
-        console.log(`${activePlayerPokemon.name} was switched out!`)
     } else {
         console.log(`Cannot switch! This Pokemon has fainted!`)
     }
