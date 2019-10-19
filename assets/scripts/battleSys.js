@@ -43,11 +43,11 @@ function attackOpponent(attacker, defender) {
     }
 
     if (defender == activeComputerPokemon) {
-        $("#compHPbar").text(`${defender.hpCurrent}/${defender.hp}`);
+        $("#compHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#compHPbar").css("width", `${Math.round(defender.hpCurrent/defender.hp*100)}%`)
         attackOpponent(defender, attacker);
     } else if (defender == activePlayerPokemon) {
-        $("#playerHPbar").text(`${defender.hpCurrent}/${defender.hp}`);
+        $("#playerHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#playerHPbar").css("width", `${Math.round(defender.hpCurrent/defender.hp*100)}%`)
     }
 }
@@ -109,14 +109,14 @@ function switchPlayerActivePokemon(pokemonIdx) {
 
 function setActivePlayerPokemonInfo(pokemonInfo) {
     $("#playerPkmnName").text(pokemonInfo.name);
-    $("#playerHPbar").text(`${pokemonInfo.hpCurrent}/${pokemonInfo.hp}`);
+    $("#playerHP").text(`${pokemonInfo.hpCurrent}/${pokemonInfo.hp}`);
     $("#playerSpriteImg").attr("src", pokemonInfo.spriteBack);
     $("#playerHPbar").css("width", `${Math.round(pokemonInfo.hpCurrent/pokemonInfo.hp*100)}%`)
 }
 
 function setActiveComputerPokemonInfo(pokemonInfo) {
     $("#compPkmnName").text(pokemonInfo.name);
-    $("#compHPbar").text(`${pokemonInfo.hpCurrent}/${pokemonInfo.hp}`);
+    $("#compHP").text(`${pokemonInfo.hpCurrent}/${pokemonInfo.hp}`);
     $("#compSpriteImg").attr("src", pokemonInfo.spriteFront);
     $("#compHPbar").css("width", `${Math.round(pokemonInfo.hpCurrent/pokemonInfo.hp*100)}%`)
 }
