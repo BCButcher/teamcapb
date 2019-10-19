@@ -4,7 +4,7 @@ var playerTeam = [];
 var activePlayerPokemon;
 var activeComputerPokemon;
 const genericCarouselID = "playerPkmn";
-var computerActiveIndex = 0;
+var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 
 function randomPokemon(teamName) {
