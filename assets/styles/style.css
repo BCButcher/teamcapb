@@ -53,14 +53,14 @@
     animation-name: slide-out;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
-    animation-duration: 0.50s;
+    animation-duration: 0.70s;
 }
 
 .slideOutBottom {
     animation-name: slide-out-bottom;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
-    animation-duration: 0.70s;
+    animation-duration: 0.45s;
 }
 
 @keyframes slide-out {
