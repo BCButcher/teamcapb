@@ -19,13 +19,15 @@ function attackOpponent(attacker, defender) {
     }
 
     defender.hpCurrent -= damage;
+    console.log(`${defender.name} took ${damage} damage! HP: ${defender.hpCurrent}/${defender.hp}`);
     if (defender.hpCurrent <= 0) {
         defender.hpCurrent = 0;
         defender.status = "fainted"
         console.log(`${defender.name} took ${damage} damage! It has ${defender.status}!`);
         if (defender == activeComputerPokemon) {
-            if (numActiveComputerPokemon > 0) {
-                numActiveComputerPokemon--;
+            computerActiveIndex++;
+            console.log(computerActiveIndex);
+            if (computerActiveIndex <= 5) {
                 switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
             } else {
                 console.log(`Computer has no usable Pokemon! You Win!`);
@@ -38,11 +40,13 @@ function attackOpponent(attacker, defender) {
                 console.log(`Please switch to your next Pokemon`);
             }
         }
-    } else {
-        console.log(`${defender.name} took ${damage} damage! HP: ${defender.hpCurrent}/${defender.hp}`);
-        if (defender == activeComputerPokemon) {
-            attackOpponent(defender, attacker);
-        }
+    }
+
+    if (defender == activeComputerPokemon) {
+        $("#compHPbar").text(`${defender.hpCurrent}/${defender.hp}`);
+        attackOpponent(defender, attacker);
+    } else if (defender == activePlayerPokemon) {
+        $("#playerHPbar").text(`${defender.hpCurrent}/${defender.hp}`);
     }
 }
 
@@ -51,7 +55,7 @@ $('#pokemonSelectBtn').click(function () {
     setActivePlayerPokemonInfo(activePlayerPokemon);
     setActiveComputerPokemonInfo(activeComputerPokemon);
 
-    setTimeout(function() {
+    setTimeout(function () {
         $("#teamSelection").css("display", "none");
         $("#battleContainer").css("display", "block");
         $("#playerSpriteImg").addClass("slideInFromLeft");
@@ -62,7 +66,7 @@ $('#pokemonSelectBtn').click(function () {
 
 // set ActivePlayerPokemon to be equal to carousel-item active
 $('#playerCarousel').mousedown(function () {
-    setTimeout(function() {
+    setTimeout(function () {
         let currentCarousel = $(".carousel > .active");
         let carouselIndex = $('.carousel-item').index(currentCarousel);
         switchPlayerActivePokemon(carouselIndex);
@@ -79,6 +83,7 @@ function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
     if (team[pokemonIdx].status != "fainted") {
         activeComputerPokemon = team[pokemonIdx];
         console.log(`${activeComputerPokemon.name} was switched out!`)
+        setActiveComputerPokemonInfo(activeComputerPokemon);
     } else {
         pokemonIdx = Math.floor(Math.random() * 5)
         switchCompActivePokemon(team, pokemonIdx, activePokemon);
@@ -90,6 +95,7 @@ function switchPlayerActivePokemon(pokemonIdx) {
         console.log(`You don't have any usable Pokemon!`)
     } else if (playerTeam[pokemonIdx].status != "fainted") {
         activePlayerPokemon = playerTeam[pokemonIdx];
+        setActivePlayerPokemonInfo(activePlayerPokemon);
     } else {
         console.log(`Cannot switch! This Pokemon has fainted!`)
     }
