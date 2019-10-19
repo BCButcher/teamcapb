@@ -141,6 +141,7 @@
     border: 5px solid darkgray;
     padding: 10px;
     margin-top: 25px;
+    overflow: hidden;
 }
 
 /* Computer Battle Boxes */
@@ -161,7 +162,11 @@
 }
 
 #compSpriteImg {
-
+    float: right;
+    height: 200px;
+    position: relative;
+    right: 20px;
+    margin-top: -40px;
 }
 
 
@@ -183,7 +188,9 @@
 }
 
 #playerSpriteImg {
-
+    height: 300px;
+    position: relative;
+    margin-bottom: -40px;
 }
 
 /* Battle Buttons */
@@ -202,6 +209,42 @@
 
 #runBtn {
 
+}
+
+.slideInFromRight {
+    animation-name: slide-in-right;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.70s;
+}
+
+.slideInFromLeft {
+    animation-name: slide-in-left;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.70s;
+}
+
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        right: -200px;
+    }
+    100% {
+        opacity: 1;
+        right: 10px;
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        left: -200px;
+    }
+    100% {
+        opacity: 1;
+        left: 0;
+    }
 }
 
 /* END Battle Container */
