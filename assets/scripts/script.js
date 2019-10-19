@@ -78,12 +78,18 @@ $(document).ready(function(){
                 $(carouselID).attr("src", playerTeam[i].spriteFront);
                 
             })
-           
+            
+            // Show the first Pokemon selection and displays their stats under the Carousel
             $("#landingPage").css("display", "none");
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
-            
+            $('.card-content').html(`
+            <span class="card-title">${activePlayerPokemon.name}</span>
+            <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+            <p>ATK: ${activePlayerPokemon.attack}</p>
+            <p>DEF: ${activePlayerPokemon.defense}</p>
+            `);
         }, 700);
     })
 });
