@@ -25,9 +25,9 @@ function attackOpponent(attacker, defender) {
         defender.status = "fainted"
         console.log(`${defender.name} took ${damage} damage! It has ${defender.status}!`);
         if (defender == activeComputerPokemon) {
-            computerActiveIndex++;
-            console.log(computerActiveIndex);
-            if (computerActiveIndex <= 5) {
+            numActiveComputerPokemon--;
+            console.log(numActiveComputerPokemon);
+            if (numActiveComputerPokemon > 0) {
                 switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
             } else {
                 console.log(`Computer has no usable Pokemon! You Win!`);
@@ -81,7 +81,11 @@ $('#playerCarousel').mousedown(function () {
 
 function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
     if (team[pokemonIdx].status != "fainted") {
-        activeComputerPokemon = team[pokemonIdx];
+        if (numActiveComputerPokemon == 1){
+            activeComputerPokemon = computerTeam.find(obj => obj.status === "ready");
+        } else {
+            activeComputerPokemon = team[pokemonIdx];
+        }
         console.log(`${activeComputerPokemon.name} was switched out!`)
         setActiveComputerPokemonInfo(activeComputerPokemon);
     } else {
