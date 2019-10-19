@@ -47,7 +47,7 @@ function attackOpponent(attacker, defender) {
 }
 
 $('#pokemonSelectBtn').click(function () {
-    
+    $("#teamSelection").removeClass("fadeIn").addClass("slideOut");
 
 })
 
