@@ -4,8 +4,8 @@ var playerTeam = [];
 var activePlayerPokemon;
 var activeComputerPokemon;
 const genericCarouselID = "playerPkmn";
-var activeComputerPokemon = 6;
-var activePlayerPokemon = 6;
+var numActiveComputerPokemon = 6;
+var numActivePlayerPokemon = 6;
 
 function randomPokemon(teamName) {
     var pokeID = Math.ceil(Math.random() * 151);
@@ -25,8 +25,10 @@ function randomPokemon(teamName) {
             backSpriteUrl = response.sprites.back_default
         }
 
+        let pkmnName = response.name;
+
         var pokeData = {
-            name: response.name,
+            name: pkmnName[0].toUpperCase() + pkmnName.slice(1),
             hp: response.stats[5].base_stat,
             hpCurrent: response.stats[5].base_stat,
             attack: response.stats[4].base_stat,
