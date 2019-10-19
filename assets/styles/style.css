@@ -145,8 +145,12 @@
 }
 
 /* Computer Battle Boxes */
-#compHP {
-    border: 2px solid black;
+
+.progress {
+    height: 20px;
+    background-color: darkgrey;
+    border: 2px black solid;
+    margin-bottom: .5rem;
 }
 
 #compHPbar {
@@ -171,9 +175,6 @@
 
 
 /* Player  Battle Boxes */
-#playerHP {
-    border: 2px solid black;
-}
 
 #playerHPbar {
     background-color: red;
