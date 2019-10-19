@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Had to make sure to load jQuery BEFFORE materialize scripts so page would generate correctly -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+
+    <title>Document MergeBranch</title>
+</head>
+
+<body>
+    <container class="white" id="landingPage" style="height: 100%;">
+        <div class="red darken-1" id="pkBallTop"></div>
+        <div class="grey darken-4" id="pkBallMid"></div>
+        <div class="grey darken-4" id="pkBallCircleBack"></div>
+        <button class="grey lighten-5" id="startGame"></button>
+    </container>
+
+    <div id="containAll" class="container">
+
+        <div id="teamSelection" style="visibility: hidden;">
+            <div class="valign-wrapper">
+                <p id="choosePokemonText">
+                    Choose a Pokemon to battle
+                </p>
+            </div>
+            <div class="carousel" id="playerCarousel">
+                <img class="carousel-item" id="playerPkmn0" src="">
+                <img class="carousel-item" id="playerPkmn1" src="">
+                <img class="carousel-item" id="playerPkmn2" src="">
+                <img class="carousel-item" id="playerPkmn3" src="">
+                <img class="carousel-item" id="playerPkmn4" src="">
+                <img class="carousel-item" id="playerPkmn5" src="">
+            </div>
+            <div id="pokemonSelectBtn" class="valign-wrapper">
+                <a class="waves-effect waves-light btn">Choose this Pokemon!</a>
+            </div>
+            <div class="card red darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Choose your first Pokemon!</span>
+                    <p>HP:</p>
+                    <p>ATK:</p>
+                    <p>DEF:</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="battleContainer" style="display: none;">
+            <div id="compHP"></div>
+            <div class="progress">
+                <div class="determinate" id="compHPbar"></div>
+            </div>
+
+            <p id="compPkmnName">compPkmnName</p>
+            <div id="compSprite">
+                <img id="compSpriteImg" src="">
+            </div>
+
+            <br>
+            <br>
+
+            <div id="playerSprite">
+                <img id="playerSpriteImg" src="">
+            </div>
+            <p id="playerPkmnName">playerPkmnName</p>
+            <div class="progress">
+                <div class="determinate" id="playerHPbar"></div>
+            </div>
+            <div id="playerHP"></div>
+
+            <div id="battleButtons">
+                <a id="attackBtn" class="waves-effect waves-light btn">Attack</a>
+                <a id="switchBtn" class="waves-effect waves-light btn">Switch</a>
+                <a id="runBtn" class="waves-effect waves-light btn">Run</a>
+            </div>
+        </div>
+
+    </div>
+    <script src="./assets/scripts/script.js"></script>
+    <script src="./assets/scripts/battleSys.js"></script>
+</body>
+
+</html>
