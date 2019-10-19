@@ -63,6 +63,13 @@
     animation-duration: 0.45s;
 }
 
+.fadeIn {
+    animation-name: fade-in;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    animation-duration: 0.70s;
+}
+
 @keyframes slide-out {
     0% {
         top: 0;
@@ -80,6 +87,15 @@
         bottom: 100%;
     }
 }
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 /* END Landing page */
 
 /* START Pokemon Selector */
@@ -89,6 +105,7 @@
     border-radius: 25px;
     border: 5px solid darkgray;
     margin-top: 25px;
+    opacity: 0;
 }
 
 #playerCarousel {
