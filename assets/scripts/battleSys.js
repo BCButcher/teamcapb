@@ -1,7 +1,7 @@
 var critMultiplier = 0.25;
 var allowPlayerInput = true;
 
-function attackOpponent(attacker, defender) {
+function attackOpponent(attacker, defender, type) {
     if ((attacker.status == "fainted") || (defender.status == "fainted")) {
         console.log(`This Pokemon is unable to continue battling! Please switch to another Pokemon!`);
         return;
@@ -12,9 +12,14 @@ function attackOpponent(attacker, defender) {
     if (isCrit) {
         console.log(`Critical!`)
     }
-
+    let damage = 0;
     // Total damage has a +/- 15% variability
-    let damage = Math.round((attacker.attack + (attacker.attack * critMultiplier * isCrit) - defender.defense) * ((Math.random() * 0.30) + 0.85));
+    if (type == "normal") {
+        damage = Math.round((attacker.attack + (attacker.attack * critMultiplier * isCrit) - defender.defense) * ((Math.random() * 0.30) + 0.85));
+    } else {
+        damage = Math.round((attacker.attackSp + (attacker.attackSp * critMultiplier * isCrit) - defender.defenseSp) * ((Math.random() * 0.30) + 0.85));
+    }
+
     if (damage <= 0) {
         damage = 1;
     }
@@ -33,6 +38,7 @@ function attackOpponent(attacker, defender) {
                     switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
                     allowPlayerInput = true;
                     $('#attackBtn').removeClass('disabled');
+                    $('#specialBtn').removeClass('disabled');
                     $('#switchBtn').removeClass('disabled');
                     $('#runBtn').removeClass('disabled');
                     $('#playerSpriteImg').removeClass('playerAttack');
@@ -48,6 +54,7 @@ function attackOpponent(attacker, defender) {
             refreshCarousel();
             allowPlayerInput = true;
             $('#attackBtn').removeClass('disabled');
+            $('#specialBtn').removeClass('disabled');
             $('#switchBtn').removeClass('disabled');
             $('#runBtn').removeClass('disabled');
         }
@@ -55,13 +62,19 @@ function attackOpponent(attacker, defender) {
 
     if (defender == activeComputerPokemon) {
         damageToaster(defender.name, damage);
+        let chooseAttack = Math.round(Math.random());
+        let attackType = "normal";
+        if (chooseAttack) {
+            attackType = "special";
+        }
         
         $("#compHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#compHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
         setTimeout(function() {
             $('#playerSpriteImg').removeClass('playerAttack');
             $('#compSpriteImg').addClass('computerAttack');
-            attackOpponent(defender, attacker);
+            console.log(attackType);
+            attackOpponent(defender, attacker, attackType);
         }, 1000)
     } else if (defender == activePlayerPokemon) {
         damageToaster(defender.name, damage);
@@ -71,6 +84,7 @@ function attackOpponent(attacker, defender) {
         setTimeout(function() {
             allowPlayerInput = true;
             $('#attackBtn').removeClass('disabled');
+            $('#specialBtn').removeClass('disabled');
             $('#switchBtn').removeClass('disabled');
             $('#runBtn').removeClass('disabled');
             $('#compSpriteImg').removeClass('computerAttack');
@@ -185,6 +199,8 @@ function refreshCarousel() {
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
     <p>DEF: ${activePlayerPokemon.defense}</p>
+    <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+    <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
     `);
 }
 
@@ -199,6 +215,8 @@ $('#playerCarousel').mousedown(function () {
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
         <p>DEF: ${activePlayerPokemon.defense}</p>
+        <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+        <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
         `);
     }, 1000)
 })
@@ -229,10 +247,23 @@ $('#attackBtn').on('click', function () {
     if (allowPlayerInput) {
         allowPlayerInput = false;
         $('#attackBtn').addClass('disabled');
+        $('#specialBtn').addClass('disabled');
         $('#switchBtn').addClass('disabled');
         $('#runBtn').addClass('disabled');
         $('#playerSpriteImg').addClass('playerAttack');
-        attackOpponent(activePlayerPokemon, activeComputerPokemon);
+        attackOpponent(activePlayerPokemon, activeComputerPokemon, "normal");
+    }
+})
+
+$('#specialBtn').on('click', function () {
+    if (allowPlayerInput) {
+        allowPlayerInput = false;
+        $('#attackBtn').addClass('disabled');
+        $('#specialBtn').addClass('disabled');
+        $('#switchBtn').addClass('disabled');
+        $('#runBtn').addClass('disabled');
+        $('#playerSpriteImg').addClass('playerAttack');
+        attackOpponent(activePlayerPokemon, activeComputerPokemon, "special");
     }
 })
 
