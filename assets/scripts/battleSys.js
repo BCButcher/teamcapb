@@ -118,6 +118,26 @@ function playerWinToaster() {
     };
 }
 
+function faintedToaster() {
+    toastr.info(`This Pokemon is unable to battle!`);
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "300",
+        "timeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+}
+
 function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
     if (numActiveComputerPokemon == 1) {
         activeComputerPokemon = computerTeam.find(obj => obj.status === "ready");
@@ -137,12 +157,9 @@ function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
 function switchPlayerActivePokemon(pokemonIdx) {
     if (numActivePlayerPokemon <= 0) {
         console.log(`You don't have any usable Pokemon!`)
-        // } else if (playerTeam[pokemonIdx].status != "fainted") {
     } else {
         activePlayerPokemon = playerTeam[pokemonIdx];
         setActivePlayerPokemonInfo(activePlayerPokemon);
-        // } else {
-        //     console.log(`Cannot switch! This Pokemon has fainted!`)
     }
 }
 
@@ -188,6 +205,7 @@ $('#playerCarousel').mousedown(function () {
 
 $('#pokemonSelectBtn').click(function () {
     if (activePlayerPokemon.status == "fainted") {
+        faintedToaster();
         return;
     }
     $("#teamSelection").removeClass("fadeIn").addClass("slideOut");
