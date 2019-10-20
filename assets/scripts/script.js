@@ -63,9 +63,6 @@ function calcStat(baseStat) {
 generateTeam(playerTeam);
 generateTeam(computerTeam);
 
-console.log("Player Team:", playerTeam);
-console.log("Opponent Team:", computerTeam);
-
 $(document).ready(function(){
     
     $("#startGame").click(function () {
@@ -87,11 +84,10 @@ $(document).ready(function(){
             $('.carousel').carousel();
             $.each($(".carousel-item"), function(i) {
                 let carouselID = '#' + genericCarouselID+i;
-                console.log(carouselID);
                 $(carouselID).attr("src", playerTeam[i].spriteFront);
-                
             })
-            
+
+    
             // Show the first Pokemon selection and displays their stats under the Carousel
             $("#landingPage").css("display", "none");
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
