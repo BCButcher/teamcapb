@@ -1,4 +1,5 @@
 var critMultiplier = 0.25;
+var allowPlayerInput = true;
 
 function attackOpponent(attacker, defender) {
     if ((attacker.status == "fainted") || (defender.status == "fainted")) {
@@ -22,11 +23,18 @@ function attackOpponent(attacker, defender) {
     if (defender.hpCurrent <= 0) {
         defender.hpCurrent = 0;
         defender.status = "fainted"
-        console.log(`${defender.name} took ${damage} damage! It has ${defender.status}!`);
+        damageToaster(defender.name, damage)
         if (defender == activeComputerPokemon) {
             numActiveComputerPokemon--;
             if (numActiveComputerPokemon > 0) {
-                switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
+                setTimeout(function() {
+                    switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
+                    allowPlayerInput = true;
+                    $('#attackBtn').removeClass('disabled');
+                    $('#switchBtn').removeClass('disabled');
+                    $('#runBtn').removeClass('disabled');
+                    $('#playerSpriteImg').removeClass('playerAttack');
+                }, 1000);
             } else {
                 console.log(`Computer has no usable Pokemon! You Win!`);
             }
@@ -34,50 +42,77 @@ function attackOpponent(attacker, defender) {
             numActivePlayerPokemon--;
             $(".carousel > .active").addClass("pkmnFainted");
             refreshCarousel();
+            allowPlayerInput = true;
+            $('#attackBtn').removeClass('disabled');
+            $('#switchBtn').removeClass('disabled');
+            $('#runBtn').removeClass('disabled');
         }
     }
 
     if (defender == activeComputerPokemon) {
+        damageToaster(defender.name, damage);
+        
         $("#compHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#compHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
-        attackOpponent(defender, attacker);
+        setTimeout(function() {
+            $('#playerSpriteImg').removeClass('playerAttack');
+            $('#compSpriteImg').addClass('computerAttack');
+            attackOpponent(defender, attacker);
+        }, 1000)
     } else if (defender == activePlayerPokemon) {
+        damageToaster(defender.name, damage);
+
         $("#playerHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#playerHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
+        setTimeout(function() {
+            allowPlayerInput = true;
+            $('#attackBtn').removeClass('disabled');
+            $('#switchBtn').removeClass('disabled');
+            $('#runBtn').removeClass('disabled');
+            $('#compSpriteImg').removeClass('computerAttack');
+        }, 1000);
     }
 }
 
-$('#pokemonSelectBtn').click(function () {
-    if (activePlayerPokemon.status == "fainted") {
-        return;
-    }
-    $("#teamSelection").removeClass("fadeIn").addClass("slideOut");
-    setActivePlayerPokemonInfo(activePlayerPokemon);
-    setActiveComputerPokemonInfo(activeComputerPokemon);
+function damageToaster(target, damage) {
+    toastr.info(`${target} took ${damage} damage!`);
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "300",
+        "timeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+}
 
-    setTimeout(function () {
-        $("#teamSelection").addClass("hide");
-        $("#battleContainer").removeClass("hide");
-        $("#playerSpriteImg").addClass("slideInFromLeft");
-        $("#compSpriteImg").addClass("slideInFromRight");
-    }, 700)
-
-})
-
-// set ActivePlayerPokemon to be equal to carousel-item active
-$('#playerCarousel').mousedown(function () {
-    setTimeout(function () {
-        let currentCarousel = $(".carousel > .active");
-        let carouselIndex = $('.carousel-item').index(currentCarousel);
-        switchPlayerActivePokemon(carouselIndex);
-        $('.card-content').html(`
-        <span class="card-title">${activePlayerPokemon.name}</span>
-        <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-        <p>ATK: ${activePlayerPokemon.attack}</p>
-        <p>DEF: ${activePlayerPokemon.defense}</p>
-        `);
-    }, 1000)
-})
+function playerWinToaster() {
+    toastr.info(`You won!`);
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "300",
+        "timeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+}
 
 function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
     if (numActiveComputerPokemon == 1) {
@@ -132,11 +167,55 @@ function refreshCarousel() {
     `);
 }
 
-$('#attackBtn').on('click', function () {
-    attackOpponent(activePlayerPokemon, activeComputerPokemon);
+// set ActivePlayerPokemon to be equal to carousel-item active
+$('#playerCarousel').mousedown(function () {
+    setTimeout(function () {
+        let currentCarousel = $(".carousel > .active");
+        let carouselIndex = $('.carousel-item').index(currentCarousel);
+        switchPlayerActivePokemon(carouselIndex);
+        $('.card-content').html(`
+        <span class="card-title">${activePlayerPokemon.name}</span>
+        <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+        <p>ATK: ${activePlayerPokemon.attack}</p>
+        <p>DEF: ${activePlayerPokemon.defense}</p>
+        `);
+    }, 1000)
+})
+
+$('#pokemonSelectBtn').click(function () {
+    if (activePlayerPokemon.status == "fainted") {
+        return;
+    }
+    $("#teamSelection").removeClass("fadeIn").addClass("slideOut");
+    setActivePlayerPokemonInfo(activePlayerPokemon);
+    setActiveComputerPokemonInfo(activeComputerPokemon);
+
+    setTimeout(function () {
+        $("#teamSelection").addClass("hide");
+        $("#battleContainer").removeClass("hide");
+        $("#playerSpriteImg").addClass("slideInFromLeft");
+        $("#compSpriteImg").addClass("slideInFromRight");
+        setTimeout(function () {
+            $("#playerSpriteImg").removeClass("slideInFromLeft");
+            $("#compSpriteImg").removeClass("slideInFromRight");
+        }, 700)
+    }, 700)
 
 })
 
+$('#attackBtn').on('click', function () {
+    if (allowPlayerInput) {
+        allowPlayerInput = false;
+        $('#attackBtn').addClass('disabled');
+        $('#switchBtn').addClass('disabled');
+        $('#runBtn').addClass('disabled');
+        $('#playerSpriteImg').addClass('playerAttack');
+        attackOpponent(activePlayerPokemon, activeComputerPokemon);
+    }
+})
+
 $('#switchBtn').on('click', function () {
-    refreshCarousel();
+    if (allowPlayerInput) {
+        refreshCarousel();
+    }
 })
