@@ -9,9 +9,6 @@ function attackOpponent(attacker, defender, type) {
 
     // Checks if the attack is a critical hit (6.25% chance)
     let isCrit = (0.0625 > Math.random());
-    if (isCrit) {
-        console.log(`Critical!`)
-    }
     let damage = 0;
     // Total damage has a +/- 15% variability
     if (type == "normal") {
@@ -204,8 +201,7 @@ function refreshCarousel() {
     `);
 }
 
-// set ActivePlayerPokemon to be equal to carousel-item active
-$('#playerCarousel').mousedown(function () {
+function updateCurrentCarouselInfo(delay) {
     setTimeout(function () {
         let currentCarousel = $(".carousel > .active");
         let carouselIndex = $('.carousel-item').index(currentCarousel);
@@ -218,7 +214,16 @@ $('#playerCarousel').mousedown(function () {
         <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
         <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
         `);
-    }, 1000)
+    }, delay)
+}
+
+// set ActivePlayerPokemon to be equal to carousel-item active
+$('#playerCarousel').mousedown(function () {
+    updateCurrentCarouselInfo(1000);
+})
+
+$('#playerCarousel').mouseup(function () {
+    updateCurrentCarouselInfo(600);
 })
 
 $('#pokemonSelectBtn').click(function () {
