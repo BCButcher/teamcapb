@@ -66,8 +66,8 @@ function calcStat(baseStat) {
     return Math.round(newStat)
 }
 
-// generateTeam(playerTeam);
-// generateTeam(computerTeam);
+generateTeam(playerTeam);
+generateTeam(computerTeam);
 
 generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     $("#startGame").removeClass("disabled");
