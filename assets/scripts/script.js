@@ -49,49 +49,53 @@ function randomPokemon(teamName) {
 };
 
 function generateTeam(team) {
+    var waitPromise = []
     for (var i = 0; i < 6; i++) {
-        randomPokemon(team);
+        waitPromise[i] = randomPokemon(team);
     }
+    return Promise.all(waitPromise);
 };
 
 function calcHP(baseHP) {
-    let newHP = (((baseHP*2)+(Math.sqrt(125)/4))/2)+50+10
+    let newHP = (((baseHP * 2) + (Math.sqrt(125) / 4)) / 2) + 50 + 10
     return Math.round(newHP)
 }
 
 function calcStat(baseStat) {
-    let newStat = (((baseStat*2)+(Math.sqrt(125)/4))/2)+5
+    let newStat = (((baseStat * 2) + (Math.sqrt(125) / 4)) / 2) + 5
     return Math.round(newStat)
 }
 
-generateTeam(playerTeam);
-generateTeam(computerTeam);
+// generateTeam(playerTeam);
+// generateTeam(computerTeam);
 
-$(document).ready(function(){
-    
+generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
+    $("#startGame").removeClass("disabled");
+    $("#startGame").text("Start Game!");
     $("#startGame").click(function () {
-    // Set background image equal to pokeball sprite from API call
-    // $.ajax({
-    //     url: "https://pokeapi.co/api/v2/item/poke-ball/",
-    //     method: "GET"
-    // }).then(function(response) {
-    //     var bgImage = response.sprites.default;
-    //     $("body").css('background-image', `url( ${bgImage} )` );
-    // });
+        // Set background image equal to pokeball sprite from API call
+        // $.ajax({
+        //     url: "https://pokeapi.co/api/v2/item/poke-ball/",
+        //     method: "GET"
+        // }).then(function(response) {
+        //     var bgImage = response.sprites.default;
+        //     $("body").css('background-image', `url( ${bgImage} )` );
+        // });
 
-    
+
         // Get that landing page outta here
         $("#landingPage").addClass("slideOut");
         $("#pkBallCircleBack").addClass("slideOutBottom");
         $("#startGame").addClass("slideOutBottom");
+
         setTimeout(function () {
             $('.carousel').carousel();
-            $.each($(".carousel-item"), function(i) {
-                let carouselID = '#' + genericCarouselID+i;
+            $.each($(".carousel-item"), function (i) {
+                let carouselID = '#' + genericCarouselID + i;
                 $(carouselID).attr("src", playerTeam[i].spriteFront);
             })
 
-    
+
             // Show the first Pokemon selection and displays their stats under the Carousel
             $("#landingPage").css("display", "none");
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
@@ -107,4 +111,4 @@ $(document).ready(function(){
             `);
         }, 700);
     })
-});
+}));
