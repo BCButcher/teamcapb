@@ -29,6 +29,8 @@ function randomPokemon(teamName) {
         let pkmnHP = calcHP(response.stats[5].base_stat);
         let pkmnAtk = calcStat(response.stats[4].base_stat);
         let pkmnDef = calcStat(response.stats[3].base_stat);
+        let pkmnSpAtk = calcStat(response.stats[2].base_stat);
+        let pkmnSpDef = calcStat(response.stats[1].base_stat);
 
         var pokeData = {
             name: pkmnName[0].toUpperCase() + pkmnName.slice(1),
@@ -36,6 +38,8 @@ function randomPokemon(teamName) {
             hpCurrent: pkmnHP,
             attack: pkmnAtk,
             defense: pkmnDef,
+            attackSp: pkmnSpAtk,
+            defenseSp: pkmnSpDef,
             status: "ready",
             spriteFront: frontSpriteUrl,
             spriteBack: backSpriteUrl
@@ -98,6 +102,8 @@ $(document).ready(function(){
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
             <p>DEF: ${activePlayerPokemon.defense}</p>
+            <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+            <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
             `);
         }, 700);
     })
