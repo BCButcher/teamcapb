@@ -25,6 +25,8 @@ function attackOpponent(attacker, defender) {
         defender.status = "fainted"
         damageToaster(defender.name, damage)
         if (defender == activeComputerPokemon) {
+            $("#compHP").text(`${defender.hpCurrent}/${defender.hp}`);
+            $("#compHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
             numActiveComputerPokemon--;
             if (numActiveComputerPokemon > 0) {
                 setTimeout(function() {
@@ -35,8 +37,10 @@ function attackOpponent(attacker, defender) {
                     $('#runBtn').removeClass('disabled');
                     $('#playerSpriteImg').removeClass('playerAttack');
                 }, 1000);
+                return;
             } else {
-                console.log(`Computer has no usable Pokemon! You Win!`);
+                playerWinToaster()
+                return;
             }
         } else {
             numActivePlayerPokemon--;
