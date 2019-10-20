@@ -8,7 +8,7 @@ var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 
 function randomPokemon(teamName) {
-    let pokeID = Math.ceil(Math.random() * 151);
+    let pokeID = Math.ceil(Math.random() * 649);
     let queryURL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`
     let isShiny = (1 == Math.ceil(Math.random() * 8192));
     let frontSpriteUrl;
