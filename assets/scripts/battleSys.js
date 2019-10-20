@@ -31,7 +31,7 @@ function attackOpponent(attacker, defender, type) {
             $("#compHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
             numActiveComputerPokemon--;
             if (numActiveComputerPokemon > 0) {
-                setTimeout(function() {
+                setTimeout(function () {
                     switchCompActivePokemon(computerTeam, Math.floor(Math.random() * 6), activeComputerPokemon);
                     allowPlayerInput = true;
                     $('#attackBtn').removeClass('disabled');
@@ -64,10 +64,10 @@ function attackOpponent(attacker, defender, type) {
         if (chooseAttack) {
             attackType = "special";
         }
-        
+
         $("#compHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#compHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
-        setTimeout(function() {
+        setTimeout(function () {
             $('#playerSpriteImg').removeClass('playerAttack');
             $('#compSpriteImg').addClass('computerAttack');
             console.log(attackType);
@@ -78,7 +78,7 @@ function attackOpponent(attacker, defender, type) {
 
         $("#playerHP").text(`${defender.hpCurrent}/${defender.hp}`);
         $("#playerHPbar").css("width", `${Math.round(defender.hpCurrent / defender.hp * 100)}%`)
-        setTimeout(function() {
+        setTimeout(function () {
             allowPlayerInput = true;
             $('#attackBtn').removeClass('disabled');
             $('#specialBtn').removeClass('disabled');
