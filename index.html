@@ -8,8 +8,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Had to make sure to load jQuery BEFFORE materialize scripts so page would generate correctly -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="assets/styles/style.css">
 
     <title>Document MergeBranch</title>
@@ -17,10 +19,13 @@
 
 <body>
     <container class="white" id="landingPage" style="height: 100%;">
-        <div class="red darken-1" id="pkBallTop"></div>
+        <div class="red darken-1" id="pkBallTop">
+            <h1 id="landingTitle">Pokemon Battle Simulator!</h1>
+        </div>
         <div class="grey darken-4" id="pkBallMid"></div>
         <div class="grey darken-4" id="pkBallCircleBack"></div>
-        <button class="grey lighten-5" id="startGame"></button>
+        <button class="grey lighten-5" id="startGame">Start Game!</button>
+
     </container>
 
     <div id="containAll" class="container">
@@ -48,11 +53,13 @@
                     <p>HP:</p>
                     <p>ATK:</p>
                     <p>DEF:</p>
+                    <p>SP. ATK:</p>
+                    <p>SP. DEF:</p>
                 </div>
             </div>
         </div>
 
-        <div id="battleContainer" style="display: none;">
+        <div id="battleContainer" class="hide">
             <div id="compHP"></div>
             <div class="progress">
                 <div class="determinate" id="compHPbar"></div>
@@ -77,8 +84,9 @@
 
             <div id="battleButtons">
                 <a id="attackBtn" class="waves-effect waves-light btn">Attack</a>
+                <a id="specialBtn" class="waves-effect waves-light btn">Sp. Attack</a>
                 <a id="switchBtn" class="waves-effect waves-light btn">Switch</a>
-                <a id="runBtn" class="waves-effect waves-light btn">Run</a>
+                <a id="runBtn" class="waves-effect waves-light btn" href="index.html">Run</a>
             </div>
         </div>
 

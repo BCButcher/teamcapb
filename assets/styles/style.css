@@ -8,6 +8,12 @@
 }
 
 /* START Landing page */
+#landingTitle {
+    margin: auto;
+    text-align: center;
+    padding-top: 10%;
+}
+
 #pkBallTop {
     height: 45vh;
     width: 100%;
@@ -153,16 +159,12 @@
     margin-bottom: .5rem;
 }
 
+.pkmnFainted {
+    filter: grayscale(100%);
+}
+
 #compHPbar {
     background-color: red;
-}
-
-#compPkmnName {
-
-}
-
-#compSprite {
-
 }
 
 #compSpriteImg {
@@ -180,17 +182,14 @@
     background-color: red;
 }
 
-#playerPkmnName {
-    
-}
-
 #playerSprite {
-
+    height: 360px;
 }
 
 #playerSpriteImg {
     height: 300px;
     position: relative;
+    bottom: 0;
     margin-bottom: -40px;
 }
 
@@ -198,18 +197,6 @@
 
 #battleButtons {
     margin-top: 5px;
-}
-
-#attackBtn {
-
-}
-
-#switchBtn {
-
-}
-
-#runBtn {
-
 }
 
 .slideInFromRight {
@@ -226,6 +213,20 @@
     animation-duration: 0.70s;
 }
 
+.playerAttack {
+    animation-name: player-attack;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.50s;
+}
+
+.computerAttack {
+    animation-name: computer-attack;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.50s;
+}
+
 @keyframes slide-in-right {
     0% {
         opacity: 0;
@@ -240,11 +241,37 @@
 @keyframes slide-in-left {
     0% {
         opacity: 0;
+        bottom: -112px;
         left: -200px;
     }
     100% {
         opacity: 1;
+        bottom: -112px;
         left: 0;
+    }
+}
+
+@keyframes player-attack {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 50px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes computer-attack {
+    0% {
+        right: 20px;
+    }
+    50% {
+        right: 60px;
+    }
+    100% {
+        right: 20px;
     }
 }
 
