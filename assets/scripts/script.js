@@ -126,7 +126,7 @@ $(document).ready(function() {
 
   
      $('buttons-wrapper').on('click',function(){
-        window.location.href = './index.html';
+        location.reload();
         console.log('something happened');
      });
           
