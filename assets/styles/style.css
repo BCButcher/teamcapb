@@ -172,26 +172,34 @@ h1{
 }
 
 #compSprite {
-    display:block;
+    width: 250px;
+    float: right;
+    display: block;
+    overflow: hidden;
 }
 
 #compSpriteImg {
-    float: right;
     height: 200px;
     position: relative;
-    right: 20px;
-    margin-top: -40px;
+    right: -40px;
 }
 
-
 /* Player  Battle Boxes */
+
+#playerInfo {
+    position: relative;
+    bottom: 0;
+}
 
 #playerHPbar {
     background-color: red;
 }
 
 #playerSprite {
-    height: 360px;
+    height: 300px;
+    width: 300px;
+    display: block;
+    overflow: hidden;
 }
 
 #playerSpriteImg {
@@ -243,26 +251,33 @@ h1{
     animation-duration: 1.00s;
 }
 
+.slideDownFaint {
+    animation-name: slide-down-faint;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-;
+    animation-duration: 0.70s;
+}
+
 @keyframes slide-in-right {
     0% {
         opacity: 0;
-        right: -200px;
+        right: -250px;
     }
     100% {
         opacity: 1;
-        right: 10px;
+        right: -40px;
     }
 }
 
 @keyframes slide-in-left {
     0% {
         opacity: 0;
-        bottom: -112px;
+        bottom: 0px;
         left: -200px;
     }
     100% {
         opacity: 1;
-        bottom: -112px;
+        bottom: 0px;
         left: 0;
     }
 }
@@ -281,13 +296,13 @@ h1{
 
 @keyframes computer-attack {
     0% {
-        right: 20px;
+        right: -40px;
     }
     50% {
-        right: 60px;
+        right: 20px;
     }
     100% {
-        right: 20px;
+        right: -40px;
     }
 }
 
@@ -309,8 +324,39 @@ h1{
     }
 }
 
+@keyframes slide-down-faint {
+    0% {
+        top: 0%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
 /* END Battle Container */
 
+
+.buttons-wrapper {
+    position: absolute;
+    height: calc(100vh);
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 997;
+    top: 0;
+    pointer-events: none;
+    width: 100%;
+  }
+  .buttons-wrapper a {
+    pointer-events: auto;
+  }
+  .mg-rg {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
 
 
 /* 
