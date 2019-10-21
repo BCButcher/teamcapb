@@ -26,7 +26,6 @@ function randomPokemon(teamName) {
             } else {
                 activeFlavor = response.flavor_text_entries[2].flavor_text;
             }
-            console.log(activeFlavor);
 
             $.get(queryURL).done(function (response) {
                 // Totally unnecessary but now we can have shinies in battle
