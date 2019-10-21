@@ -156,6 +156,7 @@ h1{
 #flavorText {
     max-width: 300px;
     padding-bottom: 5px;
+    float: right;
 }
 
 @media (max-width: 992px) {
