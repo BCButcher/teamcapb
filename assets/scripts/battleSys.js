@@ -213,7 +213,6 @@ function refreshCarousel() {
   $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
   $(".card-content").html(`
     <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-    <span class="card-title">${activePlayerPokemon.name}</span>
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
     <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -228,9 +227,9 @@ function updateCurrentCarouselInfo(delay) {
     let currentCarousel = $(".carousel > .active");
     let carouselIndex = $(".carousel-item").index(currentCarousel);
     switchPlayerActivePokemon(carouselIndex);
+    $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
     $(".card-content").html(`
         <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-        <span class="card-title">${activePlayerPokemon.name}</span>
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
         <p>DEF: ${activePlayerPokemon.defense}</p>
