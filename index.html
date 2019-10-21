@@ -1,62 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation-float.min.css" integrity="sha256-TPcVVrzfTETpAWQ8HhBHIMT7+DbszMr5n3eFi+UwIl8= sha384-+aXh7XSzITwlvjelsNWuL1A9rT8pWGaiqMMeUjtKcsWIfzT1oV8Mp3oYxmjPK8Gv sha512-cArttU/Yh+PzfQ/dhCdfBiU9+su+fuCwFxLrlLbvuJE/ynUbstaKweVPs7Hdbok9jlv9cwt+xdk20wRz7oYErQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation-prototype.min.css" integrity="sha256-JyhZsgvsqjrdl9GPOILi/zyc+z4dcwXiyP1Q7cwWlM0= sha384-GtUT6gOaCY/S1ggTUOnqe5CQAEAZ6oVTmMq3X4vfZrvp+tLgjBEmwVxJnukor+o0 sha512-x3+KBxBjFh8PGncrfDOsJhntYDBFdJxmpb211THYkQOaGWvk7ckZG6prGUpZqz85AXgiispjow06+bDnIxnWDQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation-rtl.min.css" integrity="sha256-Az+E7JXW71Srarkum5QPTdnobddg2GqI1i8+nMusgLk= sha384-eBKuNtkGVmsJD0uNnWoKYYVnzDT0PXV+XNyAgmmZwYVn7MSNcaR4i5HjOpSRd0o6 sha512-d0RjiDZM/0NlD+7Y2DhUGuAUdwDIL5lS3GPAD0HEayEcrhuLuRiPYOgFWZik+gsFzsykxSn0KO6jim7ev8kIig==" crossorigin="anonymous"> -->
-    <!-- <link rel="stylesheet" type="text/css" hrerf="C:\Users\butch\Documents\Coding\Framework\Bulma\bulma.css"> -->
-    <!-- <link rel="stylesheet" href="spectre.min.css">
-    <link rel="stylesheet" href="spectre-exp.min.css">
-    <link rel="stylesheet" href="spectre-icons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css"> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Had to make sure to load jQuery BEFFORE materialize scripts so page would generate correctly -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA==" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-    <title>PokeeLand</title>
-  </head>
-  <body>
-    <center><h1><img src="https://i.imgur.com/quYFIAQ.png" border="0"></h1></center>
+    <title>Document MergeBranch</title>
+</head>
 
-    <div id="containAll" class="container" >
-      <div id="landingPage" style="" >
-          <p id="appDesc">
-              This is a lightweight app using the PokeApi (https://pokeapi.co/) that allows you to battle a computer using a randomly generated team. <br>Click below to give it a try!
-          </p>
-        <div class="valign-wrapper">
-          <a id="startBattleBtn" class="waves-effect waves-light btn">Start Battle!</a>
+<body>
+    <container class="white" id="landingPage" style="height: 100%;">
+        <div class="red darken-1" id="pkBallTop">
+            <h1 id="landingTitle">Pokemon Battle Simulator!</h1>
         </div>
-      </div>
-      <div class="carousel">
-        <a class="carousel-item" href="#one!""><img src="images/pikachu.png"></a>
-        <a class="carousel-item" href="#two!"><img src="images/bulbasaur.png"></a>
-        <a class="carousel-item" href="#three!"><img src="images/minccino.png"></a>
-        <a class="carousel-item" href="#four!"><img src="images/lapras.png"></a>
-        <a class="carousel-item" href="#five!"><img src="images/venusaur.png"></a>
-      </div>
-      <div id="teamSelection" style="">
-          <p id="choosePokemonText">
-              Click on a pokemon to send it into battle!
-          </p>
-      </div>
-    </div>
-    <script>
-      $(document).ready(function(){
-      $('.carousel').carousel();
-      });
-    </script>
+        <div class="grey darken-4" id="pkBallMid"></div>
+        <div class="grey darken-4" id="pkBallCircleBack"></div>
+        <button class="grey lighten-5 disabled" id="startGame">Please Wait...</button>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="script.js"></script>
-  </body>
+    </container>
+
+    <div id="containAll" class="container">
+
+        <div id="teamSelection" style="visibility: hidden;">
+            <div class="valign-wrapper">
+                <p id="choosePokemonText">
+                    Choose a Pokemon to battle
+                </p>
+            </div>
+            <div class="carousel" id="playerCarousel">
+                <p id="carouselActiveName">test text</p>
+                <img class="carousel-item" id="playerPkmn0" src="">
+                <img class="carousel-item" id="playerPkmn1" src="">
+                <img class="carousel-item" id="playerPkmn2" src="">
+                <img class="carousel-item" id="playerPkmn3" src="">
+                <img class="carousel-item" id="playerPkmn4" src="">
+                <img class="carousel-item" id="playerPkmn5" src="">
+            </div>
+            <div id="pokemonSelectBtn" class="valign-wrapper">
+                <a class="waves-effect waves-light btn">Choose this Pokemon!</a>
+            </div>
+            <div class="card red darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Choose your first Pokemon!</span>
+                    <p>HP:</p>
+                    <p>ATK:</p>
+                    <p>DEF:</p>
+                    <p>SP. ATK:</p>
+                    <p>SP. DEF:</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="battleContainer" class="hide">
+            <div id="compHP"></div>
+            <div class="progress">
+                <div class="determinate" id="compHPbar"></div>
+            </div>
+
+            <p id="compPkmnName">compPkmnName</p>
+            <div id="compSprite">
+                <img id="compSpriteImg" src="">
+            </div>
+
+            <br>
+            <br>
+
+            <div id="playerSprite">
+                <img id="playerSpriteImg" src="">
+            </div>
+
+            <div id="playerInfo">
+                <p id="playerPkmnName">playerPkmnName</p>
+                <div class="progress">
+                    <div class="determinate" id="playerHPbar"></div>
+                </div>
+                <div id="playerHP"></div>
+
+                <div id="battleButtons">
+                    <a id="attackBtn" class="waves-effect waves-light btn">Attack</a>
+                    <a id="specialBtn" class="waves-effect waves-light btn">Sp. Attack</a>
+                    <a id="switchBtn" class="waves-effect waves-light btn">Switch</a>
+                    <a id="runBtn" class="waves-effect waves-light btn" href="index.html">Run</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="endScreen" class="container hide">
+        <div class="slider fullscreen">
+            <ul class="slides">
+                <li>
+                    <img src="https://images5.alphacoders.com/613/thumb-1920-613933.jpg" />
+                    <div class="caption center-align">
+                        <h1 class="red-text z-depth-5">Game Over!</h1>
+                        <h1 class="red-text z-depth-5">
+                            Thank you for playing.
+                        </h1>
+                        </button>
+                    </div>
+                </li>
+
+                <li>
+                    <img src="http://pavbca.com/walldb/original/0/0/8/317526.jpg" />
+                    <div class="red-text caption z-depth-5 left-align">
+                        <h1>Game brought to you by Team CABP!</h1>
+                        <h1 class="red-text">
+                            Hope you've enjoyed.
+                        </h1>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://pavbca.com/walldb/original/d/2/e/317532.jpg" />
+                    <div class="caption right-align red-text z-depth-5">
+                        <h1>Keep training !</h1>
+                        <h1 class="red-text">
+                            To be the very best.
+                        </h1>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://pavbca.com/walldb/original/b/0/f/317544.jpg" />
+                    <div class="caption center-align red-text z-depth-5">
+                        <h1>And become ...</h1>
+                        <h1 class="red-text">
+                            A Pokemon Master!!!
+                        </h1>
+                    </div>
+                </li>   
+            </ul>
+            <div class="buttons-wrapper">
+                <div class="row center">
+                    <a onClick="reload" class="waves-effect waves-light red btn-large hoverable mg-rg"><i class="material-icons right">play_arrow</i>Restart</a>
+                </div>
+
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./assets/scripts/script.js"></script>
+    <script src="./assets/scripts/battleSys.js"></script>
+</body>
+
 </html>

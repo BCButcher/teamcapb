@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#containAll{
+    max-width: 700px;
+}
+
+h1{
+    text-shadow: 3px 3px 3px black;
+}
+
+/* START Landing page */
+#landingTitle {
+    margin: auto;
+    text-align: center;
+    padding-top: 10%;
+}
+
+#pkBallTop {
+    height: 45vh;
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+
+#pkBallMid {
+    padding-bottom: 40px;
+    width: 100%;
+    position: relative;
+    top: 55%;
+}
+
+#pkBallCircleBack {
+    width: 200px;
+    height: 200px;
+    border-radius: 10rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -100px;
+    bottom: 42%;
+}
+
+#startGame {
+    font-size: 18pt;
+    width: 180px;
+    height: 180px;
+    border-radius: 10rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -90px;
+    bottom: 43%;
+    transform: rotateZ(45deg);
+}
+
+#landingPage {
+    position: relative;
+    top: 0;
+}
+
+.slideOut {
+    animation-name: slide-out;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.70s;
+}
+
+.slideOutBottom {
+    animation-name: slide-out-bottom;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.45s;
+}
+
+.fadeIn {
+    animation-name: fade-in;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    animation-duration: 0.70s;
+}
+
+@keyframes slide-out {
+    0% {
+        opacity: 1;
+        top: 0;
+    }
+    100% {
+        opacity: 1;
+        top: -120%;
+    }
+}
+
+@keyframes slide-out-bottom {
+    0% {
+        bottom: 43%;
+    }
+    100% {
+        bottom: 120%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* END Landing page */
+
+/* START Pokemon Selector */
+
+#teamSelection {
+    background-color: lightgray;
+    border-radius: 25px;
+    border: 5px solid darkgray;
+    margin-top: 25px;
+    opacity: 0;
+    position: relative;
+    top: 0;
+    overflow: hidden;
+}
+
+#carouselActiveName {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    /* -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+}
+
+.carousel {
+    overflow: visible;
+}
+
+#playerCarousel {
+    height: 250px;
+}
+
+#choosePokemonText {
+    margin: 10px;
+    font-size: 25px;
+}
+
+#pokemonSelectBtn {
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+#flavorText {
+    max-width: 300px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 992px) {
+    #flavorText {
+        max-width: 200px;
+    }
+}
+
+
+/* END Pokemon Selector */
+
+
+/* START Battle Container */
+
+#battleContainer {
+    background-color: lightgray;
+    border-radius: 25px;
+    border: 5px solid darkgray;
+    padding: 10px;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+/* Computer Battle Boxes */
+
+.progress {
+    height: 20px;
+    background-color: darkgrey;
+    border: 2px black solid;
+    margin-bottom: .5rem;
+}
+
+.pkmnFainted {
+    filter: grayscale(100%);
+}
+
+#compHPbar {
+    background-color: red;
+}
+
+#compSprite {
+    width: 250px;
+    float: right;
+    display: block;
+    overflow: hidden;
+}
+
+#compSpriteImg {
+    height: 200px;
+    position: relative;
+    right: -40px;
+}
+
+/* Player  Battle Boxes */
+
+#playerInfo {
+    position: relative;
+    bottom: 0;
+}
+
+#playerHPbar {
+    background-color: red;
+}
+
+#playerSprite {
+    height: 300px;
+    width: 300px;
+    display: block;
+    overflow: hidden;
+}
+
+#playerSpriteImg {
+    height: 300px;
+    position: relative;
+    bottom: 0;
+    margin-bottom: -40px;
+}
+
+/* Battle Buttons */
+
+#battleButtons {
+    margin-top: 5px;
+}
+
+.slideInFromRight {
+    animation-name: slide-in-right;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.70s;
+}
+
+.slideInFromLeft {
+    animation-name: slide-in-left;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.70s;
+}
+
+.playerAttack {
+    animation-name: player-attack;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.50s;
+}
+
+.computerAttack {
+    animation-name: computer-attack;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.50s;
+}
+
+.idleBob {
+    animation-name: bobbing;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1.00s;
+}
+
+.slideDownFaint {
+    animation-name: slide-down-faint;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-;
+    animation-duration: 0.70s;
+}
+
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        right: -250px;
+    }
+    100% {
+        opacity: 1;
+        right: -40px;
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        bottom: 0px;
+        left: -200px;
+    }
+    100% {
+        opacity: 1;
+        bottom: 0px;
+        left: 0;
+    }
+}
+
+@keyframes player-attack {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 50px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes computer-attack {
+    0% {
+        right: -40px;
+    }
+    50% {
+        right: 20px;
+    }
+    100% {
+        right: -40px;
+    }
+}
+
+@keyframes bobbing {
+    0% {
+        bottom: 0px;
+    }
+    45% {
+        bottom: 0px;
+    }
+    55% {
+        bottom: 20px;
+    }
+    90% {
+        bottom: 20px;
+    }
+    100% {
+        bottom: 0px;
+    }
+}
+
+@keyframes slide-down-faint {
+    0% {
+        top: 0%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+/* END Battle Container */
+
+
+.buttons-wrapper {
+    position: absolute;
+    height: calc(100vh);
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 997;
+    top: 0;
+    pointer-events: none;
+    width: 100%;
+  }
+  .buttons-wrapper a {
+    pointer-events: auto;
+  }
+  .mg-rg {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+
+
+/* 
+<div id="compHP">
+<div id="compHPbar"> 
+<p id="compPkmnName">
+<div id="compSprite">
+<img id="compSpriteImg">
+*/
