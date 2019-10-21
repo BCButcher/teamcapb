@@ -59,8 +59,7 @@ function attackOpponent(attacker, defender, type) {
         setTimeout(function() {
           $("#compSpriteImg").addClass("slideDownFaint");
           setTimeout(function() {
-            switchCompActivePokemon(
-              computerTeam,
+            switchCompActivePokemon(computerTeam,
               Math.floor(Math.random() * 6),
               activeComputerPokemon
             );
