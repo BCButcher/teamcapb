@@ -4,6 +4,9 @@ var audioAttack = document.createElement("audio");
 audioAttack.setAttribute("src", "assets/musictones/Barrage_1hit.mp3");
 var audioBattle = document.createElement("audio");
 audioBattle.setAttribute("src", "assets/musictones/115-battlevstrainer.mp3");
+var audioEnd = document.createElement("audio");
+audioEnd.setAttribute("src", "assets/musictones/145-ending.mp3");
+
 
 // Primary attack function. Takes the attacking Pokemon, defending Pokemon, and the attack type
 function attackOpponent(attacker, defender, type) {
@@ -73,22 +76,36 @@ function attackOpponent(attacker, defender, type) {
         return;
       } else {
         playerWinToaster();
+        setTimeout(function() {
+            $("#battleContainer").addClass("hide");
+            $("#endScreen").removeClass("hide");
+        }, 2000);
+        audioBattle.pause();
+        audioEnd.play();       
+
         return;
       }
     } else {
-      setTimeout(function() {
         numActivePlayerPokemon--;
-        $("#playerSpriteImg").addClass("slideDownFaint");
+        if (numActivePlayerPokemon <= 0){
+            setTimeout(function() {
+                $("#battleContainer").addClass("hide");
+                $("#endScreen").removeClass("hide");
+            }, 2000);
+            audioBattle.pause();
+            audioEnd.play();
+        }
+      setTimeout(function() {
         $(".carousel > .active").addClass("pkmnFainted");
         allowPlayerInput = true;
         $("#attackBtn").removeClass("disabled");
         $("#specialBtn").removeClass("disabled");
         $("#switchBtn").removeClass("disabled");
         $("#runBtn").removeClass("disabled");
-
+        $("#playerSpriteImg").addClass("slideDownFaint");
         setTimeout(function() {
           refreshCarousel();
-        }, 1000);
+        }, 700);
       }, 1000);
     }
   }
@@ -136,67 +153,6 @@ function attackOpponent(attacker, defender, type) {
   }
 }
 
-// Toasters
-function damageToaster(target, damage) {
-  toastr.info(`${target} took ${damage} damage!`);
-  toastr.options = {
-    closeButton: false,
-    debug: false,
-    newestOnTop: false,
-    progressBar: false,
-    positionClass: "toast-top-center",
-    preventDuplicates: false,
-    onclick: null,
-    showDuration: "300",
-    hideDuration: "300",
-    timeOut: "1000",
-    showEasing: "swing",
-    hideEasing: "linear",
-    showMethod: "fadeIn",
-    hideMethod: "fadeOut"
-  };
-}
-
-function playerWinToaster() {
-  toastr.info(`You won!`);
-  toastr.options = {
-    closeButton: false,
-    debug: false,
-    newestOnTop: false,
-    progressBar: false,
-    positionClass: "toast-top-center",
-    preventDuplicates: false,
-    onclick: null,
-    showDuration: "300",
-    hideDuration: "300",
-    timeOut: "1000",
-    showEasing: "swing",
-    hideEasing: "linear",
-    showMethod: "fadeIn",
-    hideMethod: "fadeOut"
-  };
-}
-
-function faintedToaster() {
-  toastr.info(`This Pokemon is unable to battle!`);
-  toastr.options = {
-    closeButton: false,
-    debug: false,
-    newestOnTop: false,
-    progressBar: false,
-    positionClass: "toast-top-center",
-    preventDuplicates: false,
-    onclick: null,
-    showDuration: "300",
-    hideDuration: "300",
-    timeOut: "1000",
-    showEasing: "swing",
-    hideEasing: "linear",
-    showMethod: "fadeIn",
-    hideMethod: "fadeOut"
-  };
-}
-
 // Switch the computer's Pokemon if their active Pokemon faints, but only if the one chosen is usable
 function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
   if (numActiveComputerPokemon == 1) {
@@ -231,7 +187,6 @@ function setActivePlayerPokemonInfo(pokemonInfo) {
     "width",
     `${Math.round((pokemonInfo.hpCurrent / pokemonInfo.hp) * 100)}%`
     );
-    $('#playerSpriteImg').removeClass('slideDownFaint');
 }
 
 // Set the active computer's Pokemon info
@@ -255,8 +210,9 @@ function refreshCarousel() {
     .removeClass("hide slideOut")
     .addClass("fadeIn");
   $("#battleContainer").addClass("hide");
+  $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
   $(".card-content").html(`
-    <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
+    <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
     <span class="card-title">${activePlayerPokemon.name}</span>
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
@@ -273,7 +229,7 @@ function updateCurrentCarouselInfo(delay) {
     let carouselIndex = $(".carousel-item").index(currentCarousel);
     switchPlayerActivePokemon(carouselIndex);
     $(".card-content").html(`
-        <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
+        <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
         <span class="card-title">${activePlayerPokemon.name}</span>
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
@@ -310,7 +266,8 @@ $("#pokemonSelectBtn").click(function() {
   setTimeout(function() {
     $("#teamSelection").addClass("hide");
     $("#battleContainer").removeClass("hide");
-    $("#playerSpriteImg").addClass("slideInFromLeft");
+    $("#playerSpriteImg").removeClass('slideDownFaint').addClass("slideInFromLeft");
+    
     setTimeout(function() {
       audioBattle.play();
       $("#playerSpriteImg")
@@ -357,3 +314,65 @@ $("#switchBtn").on("click", function() {
     refreshCarousel();
   }
 });
+
+// Toasters
+function damageToaster(target, damage) {
+    toastr.info(`${target} took ${damage} damage!`);
+    toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: false,
+      progressBar: false,
+      positionClass: "toast-top-center",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "300",
+      timeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+  }
+  
+  function playerWinToaster() {
+    toastr.info(`You won!`);
+    toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: false,
+      progressBar: false,
+      positionClass: "toast-top-center",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "300",
+      timeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+  }
+  
+  function faintedToaster() {
+    toastr.info(`This Pokemon is unable to battle!`);
+    toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: false,
+      progressBar: false,
+      positionClass: "toast-top-center",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "300",
+      timeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+  }
+  

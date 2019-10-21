@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="assets/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
     <title>Document MergeBranch</title>
 </head>
@@ -37,6 +40,7 @@
                 </p>
             </div>
             <div class="carousel" id="playerCarousel">
+                <p id="carouselActiveName">test text</p>
                 <img class="carousel-item" id="playerPkmn0" src="">
                 <img class="carousel-item" id="playerPkmn1" src="">
                 <img class="carousel-item" id="playerPkmn2" src="">
@@ -93,6 +97,60 @@
             </div>
         </div>
     </div>
+
+    <div id="endScreen" class="container hide">
+        <div class="slider fullscreen">
+            <ul class="slides">
+                <li>
+                    <img src="https://images5.alphacoders.com/613/thumb-1920-613933.jpg" />
+                    <div class="caption center-align">
+                        <h1 class="red-text z-depth-5">Game Over!</h1>
+                        <h1 class="red-text z-depth-5">
+                            Thank you for playing.
+                        </h1>
+                        </button>
+                    </div>
+                </li>
+
+                <li>
+                    <img src="http://pavbca.com/walldb/original/0/0/8/317526.jpg" />
+                    <div class="red-text caption z-depth-5 left-align">
+                        <h1>Game brought to you by Team CABP!</h1>
+                        <h1 class="red-text">
+                            Hope you've enjoyed.
+                        </h1>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://pavbca.com/walldb/original/d/2/e/317532.jpg" />
+                    <div class="caption right-align red-text z-depth-5">
+                        <h1>Keep training !</h1>
+                        <h1 class="red-text">
+                            To be the very best.
+                        </h1>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://pavbca.com/walldb/original/b/0/f/317544.jpg" />
+                    <div class="caption center-align red-text z-depth-5">
+                        <h1>And become ...</h1>
+                        <h1 class="red-text">
+                            A Pokemon Master!!!
+                        </h1>
+                    </div>
+                </li>   
+            </ul>
+            <div class="buttons-wrapper">
+                <div class="row center">
+                    <a onClick="reload" class="waves-effect waves-light red btn-large hoverable mg-rg"><i class="material-icons right">play_arrow</i>Restart</a>
+                </div>
+
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <script src="./assets/scripts/script.js"></script>
     <script src="./assets/scripts/battleSys.js"></script>
 </body>
