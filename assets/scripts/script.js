@@ -5,6 +5,8 @@ var activeComputerPokemon;
 const genericCarouselID = "playerPkmn";
 var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
+var audioStart = document.createElement("audio");
+audioStart.setAttribute("src", "assets/musictones/101-opening.mp3");
 
 function randomPokemon(teamName) {
     let pokeID = Math.ceil(Math.random() * 649);
@@ -69,13 +71,11 @@ generateTeam(playerTeam);
 generateTeam(computerTeam);
 
 generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
-    var audioElement = document.createElement("audio");
-        audioElement.setAttribute("src", "assets/musictones/101-opening.mp3");
 
     $("#startGame").removeClass("disabled");
     $("#startGame").text("Start Game!");
     $("#startGame").click(function () {
-      audioElement.play();
+      audioStart.play();
         
         // Set background image equal to pokeball sprite from API call
         // $.ajax({
