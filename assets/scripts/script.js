@@ -109,7 +109,7 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             activeComputerPokemon = computerTeam[0];
             $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
             $('.card-content').html(`
-            <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+            <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
             <p>DEF: ${activePlayerPokemon.defense}</p>
