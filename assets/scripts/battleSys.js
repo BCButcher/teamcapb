@@ -10,8 +10,9 @@ function attackOpponent(attacker, defender, type) {
     if ((attacker.status == "fainted") || (defender.status == "fainted")) {
         console.log(`This Pokemon is unable to continue battling! Please switch to another Pokemon!`);
         return;
+        audioAttack.play()
     }
-
+    
     // Checks if the attack is a critical hit (6.25% chance)
     let isCrit = (0.0625 > Math.random());
     let damage = 0;
@@ -46,6 +47,7 @@ function attackOpponent(attacker, defender, type) {
                     $('#switchBtn').removeClass('disabled');
                     $('#runBtn').removeClass('disabled');
                     $('#playerSpriteImg').removeClass('playerAttack');
+                    $('#playerSpriteImg').addClass('idleBob');
                 }, 1000);
                 return;
             } else {
@@ -95,6 +97,7 @@ function attackOpponent(attacker, defender, type) {
             $('#switchBtn').removeClass('disabled');
             $('#runBtn').removeClass('disabled');
             $('#compSpriteImg').removeClass('computerAttack');
+            $('#playerSpriteImg').addClass('idleBob');
         }, 1000);
     }
 }
@@ -166,6 +169,7 @@ function switchCompActivePokemon(team, pokemonIdx, activePokemon) {
         activeComputerPokemon = computerTeam.find(obj => obj.status === "ready");
         setActiveComputerPokemonInfo(activeComputerPokemon);
         return;
+
     }
     if (team[pokemonIdx].status != "fainted") {
         activeComputerPokemon = team[pokemonIdx];
@@ -208,6 +212,7 @@ function refreshCarousel() {
     $("#teamSelection").removeClass("hide slideOut").addClass("fadeIn");
     $("#battleContainer").addClass("hide");
     $('.card-content').html(`
+    <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
     <span class="card-title">${activePlayerPokemon.name}</span>
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
@@ -224,6 +229,7 @@ function updateCurrentCarouselInfo(delay) {
         let carouselIndex = $('.carousel-item').index(currentCarousel);
         switchPlayerActivePokemon(carouselIndex);
         $('.card-content').html(`
+        <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
         <span class="card-title">${activePlayerPokemon.name}</span>
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
@@ -263,7 +269,7 @@ $('#pokemonSelectBtn').click(function () {
         $("#compSpriteImg").addClass("slideInFromRight");
         setTimeout(function () {
             audioBattle.play();
-            $("#playerSpriteImg").removeClass("slideInFromLeft");
+            $("#playerSpriteImg").removeClass("slideInFromLeft").addClass("idleBob");
             $("#compSpriteImg").removeClass("slideInFromRight");
         }, 700)
     }, 700)
@@ -277,7 +283,10 @@ $('#attackBtn').on('click', function () {
         $('#specialBtn').addClass('disabled');
         $('#switchBtn').addClass('disabled');
         $('#runBtn').addClass('disabled');
-        $('#playerSpriteImg').addClass('playerAttack');
+        $('#playerSpriteImg').removeClass("idleBob");
+        setTimeout(function() {
+            $('#playerSpriteImg').addClass('playerAttack');
+        }, 100)
         attackOpponent(activePlayerPokemon, activeComputerPokemon, "normal");
         audioAttack.play();
     }
@@ -290,7 +299,10 @@ $('#specialBtn').on('click', function () {
         $('#specialBtn').addClass('disabled');
         $('#switchBtn').addClass('disabled');
         $('#runBtn').addClass('disabled');
-        $('#playerSpriteImg').addClass('playerAttack');
+        $('#playerSpriteImg').removeClass("idleBob");
+        setTimeout(function() {
+            $('#playerSpriteImg').addClass('playerAttack');
+        }, 100)
         attackOpponent(activePlayerPokemon, activeComputerPokemon, "special");
     }
 })
