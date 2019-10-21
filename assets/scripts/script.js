@@ -18,7 +18,7 @@ function randomPokemon(teamName) {
     let activeFlavor = "";
     let flavorURL = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
     
-    var promiseObj = new Promise(function (resolve, reject) {
+    var promiseObj = new Promise(function (resolve) {
 
         $.get(flavorURL).then(function (response) {
             if (response.flavor_text_entries[1].language.name === "en") {
@@ -89,16 +89,6 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     $("#startGame").click(function () {
         audioStart.play();
 
-        // Set background image equal to pokeball sprite from API call
-        // $.ajax({
-        //     url: "https://pokeapi.co/api/v2/item/poke-ball/",
-        //     method: "GET"
-        // }).then(function(response) {
-        //     var bgImage = response.sprites.default;
-        //     $("body").css('background-image', `url( ${bgImage} )` );
-        // });
-
-
         // Get that landing page outta here
         $("#landingPage").addClass("slideOut");
         $("#pkBallCircleBack").addClass("slideOutBottom");
@@ -112,15 +102,14 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
                 $(carouselID).attr("src", playerTeam[i].spriteFront);
             })
 
-
             // Show the first Pokemon selection and displays their stats under the Carousel
             $("#landingPage").css("display", "none");
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
             $('.card-content').html(`
+            <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
             <span class="card-title">${activePlayerPokemon.name}</span>
-            <p>Desc. ${activePlayerPokemon.flavorText}</p>
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
             <p>DEF: ${activePlayerPokemon.defense}</p>
