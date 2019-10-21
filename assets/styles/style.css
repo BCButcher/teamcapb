@@ -1,6 +1,9 @@
     * {
     margin: 0;
     padding: 0;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #containAll{
@@ -120,6 +123,16 @@ h1{
     opacity: 0;
     position: relative;
     top: 0;
+    overflow: hidden;
+}
+
+#carouselActiveName {
+text-align: center;
+font-weight: bold;
+font-size: 25px;
+/* -khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none; */
 }
 
 #playerCarousel {
@@ -139,6 +152,18 @@ h1{
     justify-content: center;
     margin-bottom: 25px;
 }
+
+
+#flavorText {
+    max-width: 300px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 992px) {
+    #flavorText {
+        max-width: 200px;
+    }
+  };
 
 
 /* END Pokemon Selector */

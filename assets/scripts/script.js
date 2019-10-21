@@ -107,9 +107,10 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
+            $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
             $('.card-content').html(`
-            <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
-            <span class="card-title">${activePlayerPokemon.name}</span>
+            <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+            <!-- <span class="card-title">${activePlayerPokemon.name}</span> -->
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
             <p>DEF: ${activePlayerPokemon.defense}</p>
