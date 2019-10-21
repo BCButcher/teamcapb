@@ -46,6 +46,7 @@ function attackOpponent(attacker, defender, type) {
                     $('#switchBtn').removeClass('disabled');
                     $('#runBtn').removeClass('disabled');
                     $('#playerSpriteImg').removeClass('playerAttack');
+                    $('#playerSpriteImg').addClass('idleBob');
                 }, 1000);
                 return;
             } else {
@@ -209,8 +210,8 @@ function refreshCarousel() {
     $("#teamSelection").removeClass("hide slideOut").addClass("fadeIn");
     $("#battleContainer").addClass("hide");
     $('.card-content').html(`
+    <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
     <span class="card-title">${activePlayerPokemon.name}</span>
-    <p>Desc. ${activePlayerPokemon.flavorText}</p>
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
     <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -226,8 +227,8 @@ function updateCurrentCarouselInfo(delay) {
         let carouselIndex = $('.carousel-item').index(currentCarousel);
         switchPlayerActivePokemon(carouselIndex);
         $('.card-content').html(`
+        <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
         <span class="card-title">${activePlayerPokemon.name}</span>
-        <p>Desc. ${activePlayerPokemon.flavorText}</p>
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
         <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -306,6 +307,7 @@ $('#specialBtn').on('click', function () {
 
 $('#switchBtn').on('click', function () {
     if (allowPlayerInput) {
+        $('#playerSpriteImg').removeClass("idleBob");
         refreshCarousel();
     }
 })
