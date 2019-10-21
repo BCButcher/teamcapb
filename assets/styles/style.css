@@ -167,6 +167,10 @@
     background-color: red;
 }
 
+#compSprite {
+    display:block;
+}
+
 #compSpriteImg {
     float: right;
     height: 200px;
@@ -232,7 +236,7 @@
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    animation-duration: 0.70s;
+    animation-duration: 1.00s;
 }
 
 @keyframes slide-in-right {
