@@ -1,4 +1,3 @@
-// jQuery
 var computerTeam = [];
 var playerTeam = [];
 var activePlayerPokemon;
@@ -6,6 +5,9 @@ var activeComputerPokemon;
 const genericCarouselID = "playerPkmn";
 var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
+var activeFlavor;
+var audioStart = document.createElement("audio");
+audioStart.setAttribute("src", "assets/musictones/101-opening.mp3");
 
 function randomPokemon(teamName) {
     let pokeID = Math.ceil(Math.random() * 649);
@@ -13,39 +15,54 @@ function randomPokemon(teamName) {
     let isShiny = (1 == Math.ceil(Math.random() * 8192));
     let frontSpriteUrl;
     let backSpriteUrl;
+    let activeFlavor = "";
+    let flavorURL = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
+    
+    var promiseObj = new Promise(function (resolve) {
 
-    $.get(queryURL).then(function (response) {
-        // Totally unnecessary but now we can have shinies in battle
-        if (isShiny && response.sprites.back_shiny && response.sprites.front_shiny) {
-            frontSpriteUrl = response.sprites.front_shiny
-            backSpriteUrl = response.sprites.back_shiny
-            console.log("We have a shiny!");
-        } else {
-            frontSpriteUrl = response.sprites.front_default
-            backSpriteUrl = response.sprites.back_default
-        }
+        $.get(flavorURL).then(function (response) {
+            if (response.flavor_text_entries[1].language.name === "en") {
+                activeFlavor = response.flavor_text_entries[1].flavor_text;
+            } else {
+                activeFlavor = response.flavor_text_entries[2].flavor_text;
+            }
 
-        let pkmnName = response.name;
-        let pkmnHP = calcHP(response.stats[5].base_stat);
-        let pkmnAtk = calcStat(response.stats[4].base_stat);
-        let pkmnDef = calcStat(response.stats[3].base_stat);
-        let pkmnSpAtk = calcStat(response.stats[2].base_stat);
-        let pkmnSpDef = calcStat(response.stats[1].base_stat);
+            $.get(queryURL).done(function (response) {
+                // Totally unnecessary but now we can have shinies in battle
+                if (isShiny && response.sprites.back_shiny && response.sprites.front_shiny) {
+                    frontSpriteUrl = response.sprites.front_shiny
+                    backSpriteUrl = response.sprites.back_shiny
+                    console.log("We have a shiny!");
+                } else {
+                    frontSpriteUrl = response.sprites.front_default
+                    backSpriteUrl = response.sprites.back_default
+                }
 
-        var pokeData = {
-            name: pkmnName[0].toUpperCase() + pkmnName.slice(1),
-            hp: pkmnHP,
-            hpCurrent: pkmnHP,
-            attack: pkmnAtk,
-            defense: pkmnDef,
-            attackSp: pkmnSpAtk,
-            defenseSp: pkmnSpDef,
-            status: "ready",
-            spriteFront: frontSpriteUrl,
-            spriteBack: backSpriteUrl
-        }
-        teamName.push(pokeData);
-    });
+                let pkmnName = response.name;
+                let pkmnHP = calcHP(response.stats[5].base_stat);
+                let pkmnAtk = calcStat(response.stats[4].base_stat);
+                let pkmnDef = calcStat(response.stats[3].base_stat);
+                let pkmnSpAtk = calcStat(response.stats[2].base_stat);
+                let pkmnSpDef = calcStat(response.stats[1].base_stat);
+
+                var pokeData = {
+                    name: pkmnName[0].toUpperCase() + pkmnName.slice(1),
+                    hp: pkmnHP,
+                    hpCurrent: pkmnHP,
+                    attack: pkmnAtk,
+                    defense: pkmnDef,
+                    attackSp: pkmnSpAtk,
+                    defenseSp: pkmnSpDef,
+                    status: "ready",
+                    spriteFront: frontSpriteUrl,
+                    spriteBack: backSpriteUrl,
+                    flavorText: activeFlavor
+                }
+                resolve(teamName.push(pokeData));
+            })
+        });
+    })
+    return promiseObj;
 };
 
 function generateTeam(team) {
@@ -66,27 +83,17 @@ function calcStat(baseStat) {
     return Math.round(newStat)
 }
 
-generateTeam(playerTeam);
-generateTeam(computerTeam);
-
 generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     $("#startGame").removeClass("disabled");
     $("#startGame").text("Start Game!");
     $("#startGame").click(function () {
-        // Set background image equal to pokeball sprite from API call
-        // $.ajax({
-        //     url: "https://pokeapi.co/api/v2/item/poke-ball/",
-        //     method: "GET"
-        // }).then(function(response) {
-        //     var bgImage = response.sprites.default;
-        //     $("body").css('background-image', `url( ${bgImage} )` );
-        // });
-
+        audioStart.play();
 
         // Get that landing page outta here
         $("#landingPage").addClass("slideOut");
         $("#pkBallCircleBack").addClass("slideOutBottom");
         $("#startGame").addClass("slideOutBottom");
+
 
         setTimeout(function () {
             $('.carousel').carousel();
@@ -95,13 +102,13 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
                 $(carouselID).attr("src", playerTeam[i].spriteFront);
             })
 
-
             // Show the first Pokemon selection and displays their stats under the Carousel
             $("#landingPage").css("display", "none");
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
             $('.card-content').html(`
+            <p style="float: right; max-width: 300px;">"${activePlayerPokemon.flavorText}"</p>
             <span class="card-title">${activePlayerPokemon.name}</span>
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
