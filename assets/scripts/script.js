@@ -14,8 +14,18 @@ function randomPokemon(teamName) {
     let isShiny = (1 == Math.ceil(Math.random() * 8192));
     let frontSpriteUrl;
     let backSpriteUrl;
+    let activeFlavor = "";
+    let flavorURL = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
 
-    $.get(queryURL).then(function (response) {
+    $.get(flavorURL).then(function (response) {
+        if (response.flavor_text_entries[1].language.name === "en") {
+            activeFlavor = response.flavor_text_entries[1].flavor_text;
+        } else {
+            activeFlavor = response.flavor_text_entries[2].flavor_text;
+        }
+        console.log(activeFlavor);
+    // Use a second AJAX within another and wait for first to finish using .done 
+    $.get(queryURL).done(function (response) {
         // Totally unnecessary but now we can have shinies in battle
         if (isShiny && response.sprites.back_shiny && response.sprites.front_shiny) {
             frontSpriteUrl = response.sprites.front_shiny
@@ -43,12 +53,13 @@ function randomPokemon(teamName) {
             defenseSp: pkmnSpDef,
             status: "ready",
             spriteFront: frontSpriteUrl,
-            spriteBack: backSpriteUrl
+            spriteBack: backSpriteUrl,
+            flavorText: activeFlavor
         }
         teamName.push(pokeData);
-    });
+    })});
 };
-
+// SUCCESS! 
 function generateTeam(team) {
     var waitPromise = []
     for (var i = 0; i < 6; i++) {
@@ -67,8 +78,9 @@ function calcStat(baseStat) {
     return Math.round(newStat)
 }
 
-generateTeam(playerTeam);
-generateTeam(computerTeam);
+// I was thinking to create a function to pull the flavor text when carousel is generated
+
+// https://pokeapi.co/api/v2/pokemon-species/ditto/
 
 generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
 
@@ -108,6 +120,7 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             activeComputerPokemon = computerTeam[0];
             $('.card-content').html(`
             <span class="card-title">${activePlayerPokemon.name}</span>
+            <p style="float: right; max-width: 300px;">${activePlayerPokemon.flavorText}</p>
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
             <p>DEF: ${activePlayerPokemon.defense}</p>

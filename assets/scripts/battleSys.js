@@ -95,6 +95,7 @@ function attackOpponent(attacker, defender, type) {
             $('#switchBtn').removeClass('disabled');
             $('#runBtn').removeClass('disabled');
             $('#compSpriteImg').removeClass('computerAttack');
+            $('#playerSpriteImg').addClass('idleBob');
         }, 1000);
     }
 }
@@ -209,6 +210,7 @@ function refreshCarousel() {
     $("#battleContainer").addClass("hide");
     $('.card-content').html(`
     <span class="card-title">${activePlayerPokemon.name}</span>
+    <p>Desc. ${activePlayerPokemon.flavorText}</p>
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
     <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -225,6 +227,7 @@ function updateCurrentCarouselInfo(delay) {
         switchPlayerActivePokemon(carouselIndex);
         $('.card-content').html(`
         <span class="card-title">${activePlayerPokemon.name}</span>
+        <p style="float: right; max-width: 300px;"> ${activePlayerPokemon.flavorText}</p>
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
         <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -263,7 +266,7 @@ $('#pokemonSelectBtn').click(function () {
         $("#compSpriteImg").addClass("slideInFromRight");
         setTimeout(function () {
             audioBattle.play();
-            $("#playerSpriteImg").removeClass("slideInFromLeft");
+            $("#playerSpriteImg").removeClass("slideInFromLeft").addClass("idleBob");
             $("#compSpriteImg").removeClass("slideInFromRight");
         }, 700)
     }, 700)
@@ -277,7 +280,10 @@ $('#attackBtn').on('click', function () {
         $('#specialBtn').addClass('disabled');
         $('#switchBtn').addClass('disabled');
         $('#runBtn').addClass('disabled');
-        $('#playerSpriteImg').addClass('playerAttack');
+        $('#playerSpriteImg').removeClass("idleBob");
+        setTimeout(function() {
+            $('#playerSpriteImg').addClass('playerAttack');
+        }, 100)
         attackOpponent(activePlayerPokemon, activeComputerPokemon, "normal");
         audioAttack.play();
     }
@@ -290,7 +296,10 @@ $('#specialBtn').on('click', function () {
         $('#specialBtn').addClass('disabled');
         $('#switchBtn').addClass('disabled');
         $('#runBtn').addClass('disabled');
-        $('#playerSpriteImg').addClass('playerAttack');
+        $('#playerSpriteImg').removeClass("idleBob");
+        setTimeout(function() {
+            $('#playerSpriteImg').addClass('playerAttack');
+        }, 100)
         attackOpponent(activePlayerPokemon, activeComputerPokemon, "special");
     }
 })
