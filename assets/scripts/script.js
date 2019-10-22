@@ -7,7 +7,7 @@ var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 var activeFlavor;
 var audioStart = document.createElement("audio");
-audioStart.setAttribute("src", "assets/musictones/101-opening.mp3");
+audioStart.setAttribute("src", "assets/Musictones/101-opening.mp3");
 
 function randomPokemon(teamName) {
     let pokeID = Math.ceil(Math.random() * 649);

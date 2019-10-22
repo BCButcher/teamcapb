@@ -1,11 +1,11 @@
 var critMultiplier = 0.25;
 var allowPlayerInput = true;
 var audioAttack = document.createElement("audio");
-audioAttack.setAttribute("src", "assets/musictones/Barrage_1hit.mp3");
+audioAttack.setAttribute("src", "assets/Musictones/Barrage_1hit.mp3");
 var audioBattle = document.createElement("audio");
-audioBattle.setAttribute("src", "assets/musictones/115-battlevstrainer.mp3");
+audioBattle.setAttribute("src", "assets/Musictones/115-battlevstrainer.mp3");
 var audioEnd = document.createElement("audio");
-audioEnd.setAttribute("src", "assets/musictones/145-ending.mp3");
+audioEnd.setAttribute("src", "assets/Musictones/145-ending.mp3");
 
 // Primary attack function. Takes the attacking Pokemon, defending Pokemon, and the attack type
 function attackOpponent(attacker, defender, type) {
