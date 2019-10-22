@@ -1,6 +1,6 @@
 Project 1 - Pokesim
 
-Group Members: Alex, Brian, Chris
+Group Members: Alex, Brian, Chris, Paul
 
 For this project we used PokeApi
 Our initial idea was for a Pokedex, however since that would not have been enough of a challenge, we settled on doing a simple battle simulator.
