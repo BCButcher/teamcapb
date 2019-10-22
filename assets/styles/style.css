@@ -154,13 +154,13 @@ h1{
 }
 
 #flavorText {
-    width: 150px;
+    width: 300px;
     padding-bottom: 5px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 600px) {
     #flavorText {
-        max-width: 200px;
+        max-width: 175px;
     }
 }
 
