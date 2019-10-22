@@ -154,7 +154,7 @@ h1{
 }
 
 #flavorText {
-    max-width: 300px;
+    width: 150px;
     padding-bottom: 5px;
 }
 
@@ -163,7 +163,6 @@ h1{
         max-width: 200px;
     }
 }
-
 
 /* END Pokemon Selector */
 
@@ -234,11 +233,11 @@ h1{
     margin-bottom: -40px;
 }
 
-/* Battle Buttons */
-
 #battleButtons {
     margin-top: 5px;
 }
+
+/* Animations */
 
 .slideInFromRight {
     animation-name: slide-in-right;
@@ -358,8 +357,7 @@ h1{
     }
 }
 
-/* END Battle Container */
-
+/* END Animations */
 
 .buttons-wrapper {
     position: absolute;
@@ -373,21 +371,14 @@ h1{
     top: 0;
     pointer-events: none;
     width: 100%;
-  }
-  .buttons-wrapper a {
-    pointer-events: auto;
-  }
-  .mg-rg {
-    margin-right: 1rem;
-    margin-left: 1rem;
-    margin-top: 1rem;
-  }
+}
 
+.buttons-wrapper a {
+pointer-events: auto;
+}
 
-/* 
-<div id="compHP">
-<div id="compHPbar"> 
-<p id="compPkmnName">
-<div id="compSprite">
-<img id="compSpriteImg">
-*/
+.mg-rg {
+margin-right: 1rem;
+margin-left: 1rem;
+margin-top: 1rem;
+}
