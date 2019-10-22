@@ -1,14 +1,14 @@
 UT-TOR-FSF-FT-09-2019-U-C 
 
-Project 1 - Pokesim
+# Project 1 - Pokesim
 
-Group Members: Alex, Brian, Chris, Paul
+### Group Members: Alex, Brian, Chris, Paul
 
 For this project we used PokeApi
 Our initial idea was for a Pokedex, however since that would not have been enough of a challenge, we settled on doing a simple battle simulator.
 The API is quite robust, organized, and easy to use. We were easily able to identify the stats we would need to grab from our returned Pokemon “objects” and even had sprites to work with.
 
-Minimum Viable Product
+## Minimum Viable Product
 
 Rudimentary battle system
 6 Pokemon per team, randomly generated from API call
@@ -16,7 +16,7 @@ Pokemon sprites
 Simple damage calculation 
 Pokemon battle until one side runs out of usable team members
 
-Current Features
+## Current Features
 
 Able to call over 600 Pokemon
 Pokemon selection carousel with stat-display
@@ -27,7 +27,7 @@ Global + || - 15% damage variance
 Critical Chance
 Special Attack damage && defense
 
-Future Plans
+## Future Plans
 
 Server side account / logins
 Personal pokemon collection
