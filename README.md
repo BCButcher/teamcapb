@@ -41,4 +41,4 @@ Storyline - Choose your own adventure might work well with this format so far
  - [Paul @ PaulB-H](https://github.com/PaulB-H/)
  
  Fork of our finished project
-  - Remove autoplaying sound
+  - Removed autoplaying music

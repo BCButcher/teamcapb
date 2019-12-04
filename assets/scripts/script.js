@@ -6,8 +6,9 @@ const genericCarouselID = "playerPkmn";
 var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 var activeFlavor;
+
 var audioStart = document.createElement("audio");
-audioStart.setAttribute("src", "assets/Musictones/101-opening.mp3");
+// audioStart.setAttribute("src", "assets/Musictones/101-opening.mp3");
 
 function randomPokemon(teamName) {
     let pokeID = Math.ceil(Math.random() * 649);
@@ -87,7 +88,8 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     $("#startGame").removeClass("disabled");
     $("#startGame").text("Start Game!");
     $("#startGame").click(function () {
-        audioStart.play();
+
+        // audioStart.play();
 
         // Get that landing page outta here
         $("#landingPage").addClass("slideOut");
@@ -107,14 +109,16 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
-            $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
+            $('#carouselActiveName').text(`
+                ${activePlayerPokemon.name}
+            `);
             $('.card-content').html(`
-            <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-            <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-            <p>ATK: ${activePlayerPokemon.attack}</p>
-            <p>DEF: ${activePlayerPokemon.defense}</p>
-            <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-            <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+                <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+                <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+                <p>ATK: ${activePlayerPokemon.attack}</p>
+                <p>DEF: ${activePlayerPokemon.defense}</p>
+                <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+                <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
             `);
         }, 700);
     })
@@ -126,5 +130,4 @@ $(document).ready(function () {
 
 $('buttons-wrapper').on('click', function () {
     $('document').reload();
-    console.log('something happened');
 });
