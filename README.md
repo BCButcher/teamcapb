@@ -1,8 +1,10 @@
-UT-TOR-FSF-FT-09-2019-U-C 
+# Pokesim
+Fork of our finished project
 
-# Project 1 - Pokesim
-
-### Group Members: Alex, Brian, Chris, Paul
+[Chris](https://github.com/cheachster)
+[Brian](https://github.com/DreissenZulu)
+[Brian](https://github.com/BCButcher)
+[Paul](https://github.com/PaulB-H)
 
 For this project we used PokeApi
 Our initial idea was for a Pokedex, however since that would not have been enough of a challenge, we settled on doing a simple battle simulator.
