@@ -1,7 +1,8 @@
 var critMultiplier = 0.25;
 var allowPlayerInput = true;
-var audioAttack = document.createElement("audio");
-audioAttack.setAttribute("src", "assets/Musictones/Barrage_1hit.mp3");
+
+// var audioAttack = document.createElement("audio");
+// audioAttack.setAttribute("src", "assets/Musictones/Barrage_1hit.mp3");
 // var audioBattle = document.createElement("audio");
 // audioBattle.setAttribute("src", "assets/Musictones/115-battlevstrainer.mp3");
 // var audioEnd = document.createElement("audio");
@@ -18,7 +19,9 @@ function attackOpponent(attacker, defender, type) {
 
   // Checks if the attack is a critical hit (6.25% chance)
   let isCrit = 0.0625 > Math.random();
+
   let damage = 0;
+
   // Total damage has a +/- 15% variability by making total damage random from 85% to 115%
   if (type == "normal") {
     damage = Math.round(
@@ -37,7 +40,7 @@ function attackOpponent(attacker, defender, type) {
   }
 
   if (damage <= 0) {
-    damage = 1;
+    damage = 10;
   }
 
   defender.hpCurrent -= damage;
@@ -79,8 +82,10 @@ function attackOpponent(attacker, defender, type) {
             $("#battleContainer").addClass("hide");
             $("#endScreen").removeClass("hide");
         }, 2000);
-        audioBattle.pause();
-        audioEnd.play();       
+
+        // AUDIO HERE
+        // audioBattle.pause();
+        // audioEnd.play();       
 
         return;
       }
@@ -91,8 +96,10 @@ function attackOpponent(attacker, defender, type) {
                 $("#battleContainer").addClass("hide");
                 $("#endScreen").removeClass("hide");
             }, 2000);
-            audioBattle.pause();
-            audioEnd.play();
+
+            // AUDIO HERE
+            // audioBattle.pause();
+            // audioEnd.play();
         }
       setTimeout(function() {
         $(".carousel > .active").addClass("pkmnFainted");
@@ -128,7 +135,10 @@ function attackOpponent(attacker, defender, type) {
       $("#playerSpriteImg").removeClass("playerAttack");
       $("#compSpriteImg").addClass("computerAttack");
       attackOpponent(defender, attacker, attackType);
-      audioAttack.play();
+
+      // AUDIO HERE
+      // audioAttack.play();
+
     }, 1000);
 
     // Otherwise if the defender is the player's Pokemon, reenable input after taking damage
@@ -259,7 +269,8 @@ $("#pokemonSelectBtn").click(function() {
     .addClass("slideOut");
   setActivePlayerPokemonInfo(activePlayerPokemon);
   setActiveComputerPokemonInfo(activeComputerPokemon);
-  audioStart.pause();
+  // AUDIO HERE
+  // audioStart.pause();
 
   setTimeout(function() {
     $("#teamSelection").addClass("hide");
@@ -267,7 +278,8 @@ $("#pokemonSelectBtn").click(function() {
     $("#playerSpriteImg").removeClass('slideDownFaint').addClass("slideInFromLeft");
     
     setTimeout(function() {
-      audioBattle.play();
+      // AUDIO HERE
+      // audioBattle.play();
       $("#playerSpriteImg")
         .removeClass("slideInFromLeft")
         .addClass("idleBob");
@@ -287,7 +299,8 @@ $("#attackBtn").on("click", function() {
       $("#playerSpriteImg").addClass("playerAttack");
     }, 100);
     attackOpponent(activePlayerPokemon, activeComputerPokemon, "normal");
-    audioAttack.play();
+    // AUDIO HERE
+    // audioAttack.play();
   }
 });
 
