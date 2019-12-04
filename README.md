@@ -1,10 +1,4 @@
 # Pokesim
-Fork of our finished project
-
-[Chris](https://github.com/cheachster)
-[Brian](https://github.com/DreissenZulu)
-[Brian](https://github.com/BCButcher)
-[Paul](https://github.com/PaulB-H)
 
 For this project we used PokeApi
 Our initial idea was for a Pokedex, however since that would not have been enough of a challenge, we settled on doing a simple battle simulator.
@@ -36,3 +30,15 @@ Personal pokemon collection
 A more Pokemon-like battle system (moves, abilities, type advantages, etc.)
 Team builder (instead of randomly selected teams)
 Storyline - Choose your own adventure might work well with this format so far
+
+## Our Group
+ - [Chris @ cheachster](https://github.com/cheachster/)
+
+ - [Alex @ DreissenZulu](https://github.com/DreissenZulu/)
+
+ - [Brian @ BCButcher](https://github.com/BCButcher/)
+
+ - [Paul @ PaulB-H](https://github.com/PaulB-H/)
+ 
+ Fork of our finished project
+  - Remove autoplaying sound
