@@ -7,7 +7,11 @@ var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 var activeFlavor;
 var audioStart = document.createElement("audio");
+<<<<<<< HEAD
 audioStart.setAttribute("src", "assets/musictones/101-opening.mp3");
+=======
+audioStart.setAttribute("src", "assets/Musictones/101-opening.mp3");
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 
 function randomPokemon(teamName) {
     let pokeID = Math.ceil(Math.random() * 649);
@@ -109,7 +113,11 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             activeComputerPokemon = computerTeam[0];
             $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
             $('.card-content').html(`
+<<<<<<< HEAD
             <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+=======
+            <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
             <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
             <p>ATK: ${activePlayerPokemon.attack}</p>
             <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -120,6 +128,7 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     })
 }));
 
+<<<<<<< HEAD
 $(document).ready(function() {
     $(".slider").slider();
   });
@@ -129,3 +138,13 @@ $(document).ready(function() {
         $('document').reload();
         console.log('something happened');
      });
+=======
+$(document).ready(function () {
+    $(".slider").slider();
+});
+
+$('buttons-wrapper').on('click', function () {
+    $('document').reload();
+    console.log('something happened');
+});
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231

@@ -154,6 +154,7 @@ h1{
 }
 
 #flavorText {
+<<<<<<< HEAD
     max-width: 300px;
     padding-bottom: 5px;
 }
@@ -165,6 +166,18 @@ h1{
 }
 
 
+=======
+    width: 300px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 600px) {
+    #flavorText {
+        max-width: 175px;
+    }
+}
+
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 /* END Pokemon Selector */
 
 
@@ -234,12 +247,20 @@ h1{
     margin-bottom: -40px;
 }
 
+<<<<<<< HEAD
 /* Battle Buttons */
 
+=======
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 #battleButtons {
     margin-top: 5px;
 }
 
+<<<<<<< HEAD
+=======
+/* Animations */
+
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 .slideInFromRight {
     animation-name: slide-in-right;
     animation-fill-mode: forwards;
@@ -358,8 +379,12 @@ h1{
     }
 }
 
+<<<<<<< HEAD
 /* END Battle Container */
 
+=======
+/* END Animations */
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 
 .buttons-wrapper {
     position: absolute;
@@ -373,6 +398,7 @@ h1{
     top: 0;
     pointer-events: none;
     width: 100%;
+<<<<<<< HEAD
   }
   .buttons-wrapper a {
     pointer-events: auto;
@@ -391,3 +417,16 @@ h1{
 <div id="compSprite">
 <img id="compSpriteImg">
 */
+=======
+}
+
+.buttons-wrapper a {
+pointer-events: auto;
+}
+
+.mg-rg {
+margin-right: 1rem;
+margin-left: 1rem;
+margin-top: 1rem;
+}
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231

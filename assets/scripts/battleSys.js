@@ -1,12 +1,20 @@
 var critMultiplier = 0.25;
 var allowPlayerInput = true;
 var audioAttack = document.createElement("audio");
+<<<<<<< HEAD
 audioAttack.setAttribute("src", "assets/musictones/Barrage_1hit.mp3");
 var audioBattle = document.createElement("audio");
 audioBattle.setAttribute("src", "assets/musictones/115-battlevstrainer.mp3");
 var audioEnd = document.createElement("audio");
 audioEnd.setAttribute("src", "assets/musictones/145-ending.mp3");
 
+=======
+audioAttack.setAttribute("src", "assets/Musictones/Barrage_1hit.mp3");
+var audioBattle = document.createElement("audio");
+audioBattle.setAttribute("src", "assets/Musictones/115-battlevstrainer.mp3");
+var audioEnd = document.createElement("audio");
+audioEnd.setAttribute("src", "assets/Musictones/145-ending.mp3");
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 
 // Primary attack function. Takes the attacking Pokemon, defending Pokemon, and the attack type
 function attackOpponent(attacker, defender, type) {
@@ -212,7 +220,11 @@ function refreshCarousel() {
   $("#battleContainer").addClass("hide");
   $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
   $(".card-content").html(`
+<<<<<<< HEAD
     <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+=======
+    <p id="flavorText"  style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
     <p>ATK: ${activePlayerPokemon.attack}</p>
     <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -229,7 +241,11 @@ function updateCurrentCarouselInfo(delay) {
     switchPlayerActivePokemon(carouselIndex);
     $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
     $(".card-content").html(`
+<<<<<<< HEAD
         <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+=======
+        <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
         <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
         <p>ATK: ${activePlayerPokemon.attack}</p>
         <p>DEF: ${activePlayerPokemon.defense}</p>
@@ -335,6 +351,7 @@ function damageToaster(target, damage) {
     };
   }
   
+<<<<<<< HEAD
   function playerWinToaster() {
     toastr.info(`You won!`);
     toastr.options = {
@@ -374,3 +391,44 @@ function damageToaster(target, damage) {
       hideMethod: "fadeOut"
     };
   }
+=======
+function playerWinToaster() {
+  toastr.info(`You won!`);
+  toastr.options = {
+    closeButton: false,
+    debug: false,
+    newestOnTop: false,
+    progressBar: false,
+    positionClass: "toast-top-center",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "300",
+    timeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+  };
+}
+  
+function faintedToaster() {
+  toastr.info(`This Pokemon is unable to battle!`);
+  toastr.options = {
+    closeButton: false,
+    debug: false,
+    newestOnTop: false,
+    progressBar: false,
+    positionClass: "toast-top-center",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "300",
+    timeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+  };
+}
+>>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
