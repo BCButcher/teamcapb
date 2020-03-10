@@ -249,12 +249,16 @@ function updateCurrentCarouselInfo(delay) {
 }
 
 // set ActivePlayerPokemon to be equal to carousel-item active when the mouse is held down or when mouse is released
-$("#playerCarousel").mousedown(function () {
-  updateCurrentCarouselInfo(600);
-});
+// $("#playerCarousel").mousedown(function () {
+//   updateCurrentCarouselInfo(600);
+// });
 
 $("#playerCarousel").mouseup(function () {
-  updateCurrentCarouselInfo(600);
+  updateCurrentCarouselInfo(1000);
+});
+
+$("#playerCarousel").on("touchend", function () {
+  updateCurrentCarouselInfo(1000);
 });
 
 // Select the Pokemon for battle if they're usable
