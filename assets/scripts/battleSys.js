@@ -250,14 +250,10 @@ function updateCurrentCarouselInfo(delay) {
 
 // set ActivePlayerPokemon to be equal to carousel-item active when the mouse is held down or when mouse is released
 $("#playerCarousel").mousedown(function () {
-  updateCurrentCarouselInfo(1000);
-});
-
-$("#playerCarousel").mouseup(function () {
   updateCurrentCarouselInfo(600);
 });
 
-$("#playerCarousel").touchend(function () {
+$("#playerCarousel").mouseup(function () {
   updateCurrentCarouselInfo(600);
 });
 
