@@ -21,7 +21,7 @@ function randomPokemon(teamName) {
     let backSpriteUrl;
     let activeFlavor = "";
     let flavorURL = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
-    
+
     var promiseObj = new Promise(function (resolve) {
 
         $.get(flavorURL).then(function (response) {
@@ -117,11 +117,13 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             `);
             $('.card-content').html(`
                 <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-                <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-                <p>ATK: ${activePlayerPokemon.attack}</p>
-                <p>DEF: ${activePlayerPokemon.defense}</p>
-                <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-                <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+                <div id="stat-box">
+                    <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+                    <p>ATK: ${activePlayerPokemon.attack}</p>
+                    <p>DEF: ${activePlayerPokemon.defense}</p>
+                    <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+                    <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+                </div>
             `);
         }, 700);
     })

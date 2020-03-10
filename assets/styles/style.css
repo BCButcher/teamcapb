@@ -145,11 +145,6 @@ h1 {
     height: 250px;
 }
 
-#choosePokemonText {
-    margin: 10px;
-    font-size: 25px;
-}
-
 #pokemonSelectBtn {
     justify-content: center;
     margin-bottom: 25px;

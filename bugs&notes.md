@@ -2,6 +2,10 @@
 # Bug #01
 Carousel was not updating info properly for touch events or mouseclicks
 
+# Bug #01 a 
+
+Click's + taps inside #playerCarousel cause erratic movement of carousel items
+
 ## Commented out below:
 // $("#playerCarousel").mousedown(function () {
 //   updateCurrentCarouselInfo(600);
@@ -16,14 +20,11 @@ $("#playerCarousel").on("touchend", function () {
   updateCurrentCarouselInfo(1000);
 });
 
-Changed delay to 1500, still not getting reliable carousel info updates
-
+Changed delay to 1500, still not getting reliable carousel info updates but is improved
 
 # Bug #02 
 
-Click's + taps inside #playerCarousel cause erratic movement of carousel items
-
-
+Enemy pkmn sprite overlaps player pkmn sprite during player attack
 
 
 Changelog
