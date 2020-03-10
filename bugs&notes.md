@@ -1,3 +1,4 @@
+Major bugs may get a number and be listed here, smaller updates may be pointed out under Changelog
 
 # Bug #01
 Carousel was not updating info properly for touch events or mouseclicks
@@ -34,3 +35,9 @@ Changed battlebuttons to flexbox, space evenly, and small margin. Also made run 
 
 Mar 10
 Updated pokemon battle sprite sizes - Previously much too large - Still work to do on responsive sizing and positioning
+
+Mar 10
+Formatted carousel info box display center and justify content center. Created stat-box wrapper and set min-width of 80px and 10px padding left
+
+Mar 10
+Restart button after losing or winning not working - fixed by changing link on button from /onClick="reload"/ to /onClick="window.location.reload();/

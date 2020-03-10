@@ -43,7 +43,8 @@ function attackOpponent(attacker, defender, type) {
     damage = 10;
   }
 
-  defender.hpCurrent -= damage;
+  // ORIGINAL defender.hpCurrent -= damage;
+  defender.hpCurrent -= 10000;
 
   // If the defending Pokemon faints, switch to a new Pokemon if available
   if (defender.hpCurrent <= 0) {
@@ -221,7 +222,7 @@ function refreshCarousel() {
   $("#battleContainer").addClass("hide");
   $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
   $(".card-content").html(`
-    <p id="flavorText"  style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+    <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
     <div id="stats-box">
       <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
       <p>ATK: ${activePlayerPokemon.attack}</p>
@@ -240,7 +241,7 @@ function updateCurrentCarouselInfo(delay) {
     switchPlayerActivePokemon(carouselIndex);
     $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
     $(".card-content").html(`
-        <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
+        <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
         <div id="stats-box">
           <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
           <p>ATK: ${activePlayerPokemon.attack}</p>
