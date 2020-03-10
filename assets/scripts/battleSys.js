@@ -254,11 +254,11 @@ function updateCurrentCarouselInfo(delay) {
 // });
 
 $("#playerCarousel").mouseup(function () {
-  updateCurrentCarouselInfo(1000);
+  updateCurrentCarouselInfo(1600);
 });
 
 $("#playerCarousel").on("touchend", function () {
-  updateCurrentCarouselInfo(1000);
+  updateCurrentCarouselInfo(1600);
 });
 
 // Select the Pokemon for battle if they're usable
