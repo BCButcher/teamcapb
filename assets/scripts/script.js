@@ -92,6 +92,8 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     $("#startGame").text("Start Game!");
     $("#startGame").click(function () {
 
+        $("#containAll").removeClass("d-none");
+
         // audioStart.play();
 
         // Get that landing page outta here

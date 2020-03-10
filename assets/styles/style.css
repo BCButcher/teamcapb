@@ -405,3 +405,7 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+.d-none {
+    display: none;
+}

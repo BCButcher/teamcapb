@@ -25,7 +25,9 @@ Changed delay to 1500, still not getting reliable carousel info updates but is i
 
 # Bug #02 
 
-Enemy pkmn sprite overlaps player pkmn sprite during player attack
+pkmn sprites overlap during attack
+
+
 
 
 Changelog
@@ -41,3 +43,6 @@ Formatted carousel info box display center and justify content center. Created s
 
 Mar 10
 Restart button after losing or winning not working - fixed by changing link on button from /onClick="reload"/ to /onClick="window.location.reload();/
+
+Mar 10
+landing page screen length is too long on mobile extra blank space - Fixed by adding class d-none to #contain-all wrapper, and $("#containAll").removeClass("d-none"); after start game is clicked
