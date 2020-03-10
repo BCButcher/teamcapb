@@ -43,8 +43,8 @@ function attackOpponent(attacker, defender, type) {
     damage = 10;
   }
 
-  // ORIGINAL defender.hpCurrent -= damage;
-  defender.hpCurrent -= 10000;
+  defender.hpCurrent -= damage;
+  // FOR TESTING defender.hpCurrent -= 10000;
 
   // If the defending Pokemon faints, switch to a new Pokemon if available
   if (defender.hpCurrent <= 0) {
