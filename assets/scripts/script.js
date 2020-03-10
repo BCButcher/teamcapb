@@ -116,8 +116,8 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
                 ${activePlayerPokemon.name}
             `);
             $('.card-content').html(`
-                <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-                <div id="stat-box">
+                <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
+                <div id="stats-box">
                     <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
                     <p>ATK: ${activePlayerPokemon.attack}</p>
                     <p>DEF: ${activePlayerPokemon.defense}</p>

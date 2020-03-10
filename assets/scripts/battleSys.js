@@ -222,11 +222,13 @@ function refreshCarousel() {
   $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
   $(".card-content").html(`
     <p id="flavorText"  style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-    <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-    <p>ATK: ${activePlayerPokemon.attack}</p>
-    <p>DEF: ${activePlayerPokemon.defense}</p>
-    <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-    <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+    <div id="stats-box">
+      <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+      <p>ATK: ${activePlayerPokemon.attack}</p>
+      <p>DEF: ${activePlayerPokemon.defense}</p>
+      <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+      <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+    </div>
     `);
 }
 
@@ -239,11 +241,13 @@ function updateCurrentCarouselInfo(delay) {
     $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
     $(".card-content").html(`
         <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-        <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-        <p>ATK: ${activePlayerPokemon.attack}</p>
-        <p>DEF: ${activePlayerPokemon.defense}</p>
-        <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-        <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+        <div id="stats-box">
+          <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+          <p>ATK: ${activePlayerPokemon.attack}</p>
+          <p>DEF: ${activePlayerPokemon.defense}</p>
+          <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+          <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+        </div>
         `);
   }, delay);
 }

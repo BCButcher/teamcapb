@@ -391,3 +391,17 @@ h1 {
     margin-left: 1rem;
     margin-top: 1rem;
 }
+
+.valign-wrapper {
+    justify-content: center;
+}
+
+#stats-box {
+    margin-left: 10px;
+    min-width: 80px;
+}
+
+.card-content {
+    display: flex;
+    justify-content: center;
+}
