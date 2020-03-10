@@ -28,14 +28,14 @@ function attackOpponent(attacker, defender, type) {
       (attacker.attack +
         attacker.attack * critMultiplier * isCrit -
         defender.defense) *
-        (Math.random() * 0.3 + 0.85)
+      (Math.random() * 0.3 + 0.85)
     );
   } else {
     damage = Math.round(
       (attacker.attackSp +
         attacker.attackSp * critMultiplier * isCrit -
         defender.defenseSp) *
-        (Math.random() * 0.3 + 0.85)
+      (Math.random() * 0.3 + 0.85)
     );
   }
 
@@ -58,9 +58,9 @@ function attackOpponent(attacker, defender, type) {
       );
       numActiveComputerPokemon--;
       if (numActiveComputerPokemon > 0) {
-        setTimeout(function() {
+        setTimeout(function () {
           $("#compSpriteImg").addClass("slideDownFaint");
-          setTimeout(function() {
+          setTimeout(function () {
             switchCompActivePokemon(
               computerTeam,
               Math.floor(Math.random() * 6),
@@ -78,9 +78,9 @@ function attackOpponent(attacker, defender, type) {
         return;
       } else {
         playerWinToaster();
-        setTimeout(function() {
-            $("#battleContainer").addClass("hide");
-            $("#endScreen").removeClass("hide");
+        setTimeout(function () {
+          $("#battleContainer").addClass("hide");
+          $("#endScreen").removeClass("hide");
         }, 2000);
 
         // AUDIO HERE
@@ -90,18 +90,18 @@ function attackOpponent(attacker, defender, type) {
         return;
       }
     } else {
-        numActivePlayerPokemon--;
-        if (numActivePlayerPokemon <= 0){
-            setTimeout(function() {
-                $("#battleContainer").addClass("hide");
-                $("#endScreen").removeClass("hide");
-            }, 2000);
+      numActivePlayerPokemon--;
+      if (numActivePlayerPokemon <= 0) {
+        setTimeout(function () {
+          $("#battleContainer").addClass("hide");
+          $("#endScreen").removeClass("hide");
+        }, 2000);
 
-            // AUDIO HERE
-            // audioBattle.pause();
-            // audioEnd.play();
-        }
-      setTimeout(function() {
+        // AUDIO HERE
+        // audioBattle.pause();
+        // audioEnd.play();
+      }
+      setTimeout(function () {
         $(".carousel > .active").addClass("pkmnFainted");
         allowPlayerInput = true;
         $("#attackBtn").removeClass("disabled");
@@ -109,7 +109,7 @@ function attackOpponent(attacker, defender, type) {
         $("#switchBtn").removeClass("disabled");
         $("#runBtn").removeClass("disabled");
         $("#playerSpriteImg").addClass("slideDownFaint");
-        setTimeout(function() {
+        setTimeout(function () {
           refreshCarousel();
         }, 700);
       }, 1000);
@@ -131,7 +131,7 @@ function attackOpponent(attacker, defender, type) {
       "width",
       `${Math.round((defender.hpCurrent / defender.hp) * 100)}%`
     );
-    setTimeout(function() {
+    setTimeout(function () {
       $("#playerSpriteImg").removeClass("playerAttack");
       $("#compSpriteImg").addClass("computerAttack");
       attackOpponent(defender, attacker, attackType);
@@ -150,7 +150,7 @@ function attackOpponent(attacker, defender, type) {
       "width",
       `${Math.round((defender.hpCurrent / defender.hp) * 100)}%`
     );
-    setTimeout(function() {
+    setTimeout(function () {
       allowPlayerInput = true;
       $("#attackBtn").removeClass("disabled");
       $("#specialBtn").removeClass("disabled");
@@ -195,7 +195,7 @@ function setActivePlayerPokemonInfo(pokemonInfo) {
   $("#playerHPbar").css(
     "width",
     `${Math.round((pokemonInfo.hpCurrent / pokemonInfo.hp) * 100)}%`
-    );
+  );
 }
 
 // Set the active computer's Pokemon info
@@ -208,9 +208,9 @@ function setActiveComputerPokemonInfo(pokemonInfo) {
     `${Math.round((pokemonInfo.hpCurrent / pokemonInfo.hp) * 100)}%`
   );
   $('#compSpriteImg').removeClass('slideDownFaint').addClass('slideInFromRight');
-    setTimeout(function () {
-        $('#compSpriteImg').removeClass('slideInFromRight');
-    }, 1500)
+  setTimeout(function () {
+    $('#compSpriteImg').removeClass('slideInFromRight');
+  }, 1500)
 }
 
 // Show the carousel again when called in battle
@@ -232,7 +232,7 @@ function refreshCarousel() {
 
 // Wait for a delay, then call the update
 function updateCurrentCarouselInfo(delay) {
-  setTimeout(function() {
+  setTimeout(function () {
     let currentCarousel = $(".carousel > .active");
     let carouselIndex = $(".carousel-item").index(currentCarousel);
     switchPlayerActivePokemon(carouselIndex);
@@ -249,18 +249,23 @@ function updateCurrentCarouselInfo(delay) {
 }
 
 // set ActivePlayerPokemon to be equal to carousel-item active when the mouse is held down or when mouse is released
-$("#playerCarousel").mousedown(function() {
+$("#playerCarousel").mousedown(function () {
   updateCurrentCarouselInfo(1000);
 });
 
-$("#playerCarousel").mouseup(function() {
+$("#playerCarousel").mouseup(function () {
+  updateCurrentCarouselInfo(600);
+});
+
+$("#playerCarousel").touchend(function () {
   updateCurrentCarouselInfo(600);
 });
 
 // Select the Pokemon for battle if they're usable
-$("#pokemonSelectBtn").click(function() {
+$("#pokemonSelectBtn").click(function () {
   if (activePlayerPokemon.status == "fainted") {
     faintedToaster();
+    // This Pokemon is unable to battle!
     return;
   }
 
@@ -272,22 +277,24 @@ $("#pokemonSelectBtn").click(function() {
   // AUDIO HERE
   // audioStart.pause();
 
-  setTimeout(function() {
+  setTimeout(function () {
     $("#teamSelection").addClass("hide");
     $("#battleContainer").removeClass("hide");
+    // Fainted pokemon img removed, new pokemon img slides in
     $("#playerSpriteImg").removeClass('slideDownFaint').addClass("slideInFromLeft");
-    
-    setTimeout(function() {
+
+    setTimeout(function () {
       // AUDIO HERE
       // audioBattle.play();
       $("#playerSpriteImg")
         .removeClass("slideInFromLeft")
+        // Now starts bob animation, after slideInFromLeft has played
         .addClass("idleBob");
     }, 700);
   }, 700);
 });
 
-$("#attackBtn").on("click", function() {
+$("#attackBtn").on("click", function () {
   if (allowPlayerInput) {
     allowPlayerInput = false;
     $("#attackBtn").addClass("disabled");
@@ -304,7 +311,7 @@ $("#attackBtn").on("click", function() {
   }
 });
 
-$("#specialBtn").on("click", function() {
+$("#specialBtn").on("click", function () {
   if (allowPlayerInput) {
     allowPlayerInput = false;
     $("#attackBtn").addClass("disabled");
@@ -319,7 +326,7 @@ $("#specialBtn").on("click", function() {
   }
 });
 
-$("#switchBtn").on("click", function() {
+$("#switchBtn").on("click", function () {
   if (allowPlayerInput) {
     $("#playerSpriteImg").removeClass("idleBob");
     refreshCarousel();
@@ -328,25 +335,25 @@ $("#switchBtn").on("click", function() {
 
 // Toasters
 function damageToaster(target, damage) {
-    toastr.info(`${target} took ${damage} damage!`);
-    toastr.options = {
-      closeButton: false,
-      debug: false,
-      newestOnTop: false,
-      progressBar: false,
-      positionClass: "toast-top-center",
-      preventDuplicates: false,
-      onclick: null,
-      showDuration: "300",
-      hideDuration: "300",
-      timeOut: "1000",
-      showEasing: "swing",
-      hideEasing: "linear",
-      showMethod: "fadeIn",
-      hideMethod: "fadeOut"
-    };
-  }
-  
+  toastr.info(`${target} took ${damage} damage!`);
+  toastr.options = {
+    closeButton: false,
+    debug: false,
+    newestOnTop: false,
+    progressBar: false,
+    positionClass: "toast-top-center",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "300",
+    timeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+  };
+}
+
 function playerWinToaster() {
   toastr.info(`You won!`);
   toastr.options = {
@@ -366,7 +373,7 @@ function playerWinToaster() {
     hideMethod: "fadeOut"
   };
 }
-  
+
 function faintedToaster() {
   toastr.info(`This Pokemon is unable to battle!`);
   toastr.options = {
