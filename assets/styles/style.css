@@ -6,15 +6,16 @@
     -ms-user-select: none;
 }
 
-#containAll{
+#containAll {
     max-width: 700px;
 }
 
-h1{
-    text-shadow: 3px 3px 3px black;
+h1 {
+    font-style: italic;
 }
 
 /* START Landing page */
+
 #landingTitle {
     margin: auto;
     text-align: center;
@@ -111,6 +112,7 @@ h1{
         opacity: 1;
     }
 }
+
 /* END Landing page */
 
 /* START Pokemon Selector */
@@ -143,30 +145,12 @@ h1{
     height: 250px;
 }
 
-#choosePokemonText {
-    margin: 10px;
-    font-size: 25px;
-}
-
 #pokemonSelectBtn {
     justify-content: center;
     margin-bottom: 25px;
 }
 
 #flavorText {
-<<<<<<< HEAD
-    max-width: 300px;
-    padding-bottom: 5px;
-}
-
-@media (max-width: 992px) {
-    #flavorText {
-        max-width: 200px;
-    }
-}
-
-
-=======
     width: 300px;
     padding-bottom: 5px;
 }
@@ -177,9 +161,7 @@ h1{
     }
 }
 
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 /* END Pokemon Selector */
-
 
 /* START Battle Container */
 
@@ -210,16 +192,16 @@ h1{
 }
 
 #compSprite {
-    width: 250px;
+    /* width: 250px; */
     float: right;
     display: block;
     overflow: hidden;
 }
 
 #compSpriteImg {
-    height: 200px;
+    height: 125px;
     position: relative;
-    right: -40px;
+    /* right: -40px; */
 }
 
 /* Player  Battle Boxes */
@@ -234,33 +216,38 @@ h1{
 }
 
 #playerSprite {
-    height: 300px;
-    width: 300px;
+    /* height: 300px; */
+    /* width: 300px; */
     display: block;
     overflow: hidden;
 }
 
 #playerSpriteImg {
-    height: 300px;
+    height: 200px;
     position: relative;
     bottom: 0;
     margin-bottom: -40px;
+    left: -30px;
 }
 
-<<<<<<< HEAD
-/* Battle Buttons */
-
-=======
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 #battleButtons {
     margin-top: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: visible;
+    flex-wrap: wrap;
 }
 
-<<<<<<< HEAD
-=======
+#battleButtons .btn {
+    margin: 0 0 5px 5px;
+}
+
+#battleButtons #runBtn {
+    width: 106px;
+}
+
 /* Animations */
 
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 .slideInFromRight {
     animation-name: slide-in-right;
     animation-fill-mode: forwards;
@@ -379,12 +366,7 @@ h1{
     }
 }
 
-<<<<<<< HEAD
-/* END Battle Container */
-
-=======
 /* END Animations */
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
 
 .buttons-wrapper {
     position: absolute;
@@ -398,35 +380,32 @@ h1{
     top: 0;
     pointer-events: none;
     width: 100%;
-<<<<<<< HEAD
-  }
-  .buttons-wrapper a {
-    pointer-events: auto;
-  }
-  .mg-rg {
-    margin-right: 1rem;
-    margin-left: 1rem;
-    margin-top: 1rem;
-  }
-
-
-/* 
-<div id="compHP">
-<div id="compHPbar"> 
-<p id="compPkmnName">
-<div id="compSprite">
-<img id="compSpriteImg">
-*/
-=======
 }
 
 .buttons-wrapper a {
-pointer-events: auto;
+    pointer-events: auto;
 }
 
 .mg-rg {
-margin-right: 1rem;
-margin-left: 1rem;
-margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
 }
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
+
+.valign-wrapper {
+    justify-content: center;
+}
+
+#stats-box {
+    margin-left: 10px;
+    min-width: 80px;
+}
+
+.card-content {
+    display: flex;
+    justify-content: center;
+}
+
+.d-none {
+    display: none;
+}

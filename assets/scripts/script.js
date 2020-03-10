@@ -6,22 +6,22 @@ const genericCarouselID = "playerPkmn";
 var numActiveComputerPokemon = 6;
 var numActivePlayerPokemon = 6;
 var activeFlavor;
-var audioStart = document.createElement("audio");
-<<<<<<< HEAD
-audioStart.setAttribute("src", "assets/musictones/101-opening.mp3");
-=======
-audioStart.setAttribute("src", "assets/Musictones/101-opening.mp3");
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
+
+// var audioStart = document.createElement("audio");
+// audioStart.setAttribute("src", "assets/Musictones/101-opening.mp3");
 
 function randomPokemon(teamName) {
-    let pokeID = Math.ceil(Math.random() * 649);
+
+    // Set limit to first 150 pokemon instead of 649
+    let pokeID = Math.ceil(Math.random() * 149);
+
     let queryURL = `https://pokeapi.co/api/v2/pokemon/${pokeID}/`
     let isShiny = (1 == Math.ceil(Math.random() * 8192));
     let frontSpriteUrl;
     let backSpriteUrl;
     let activeFlavor = "";
     let flavorURL = `https://pokeapi.co/api/v2/pokemon-species/${pokeID}/`;
-    
+
     var promiseObj = new Promise(function (resolve) {
 
         $.get(flavorURL).then(function (response) {
@@ -91,7 +91,10 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
     $("#startGame").removeClass("disabled");
     $("#startGame").text("Start Game!");
     $("#startGame").click(function () {
-        audioStart.play();
+
+        $("#containAll").removeClass("d-none");
+
+        // audioStart.play();
 
         // Get that landing page outta here
         $("#landingPage").addClass("slideOut");
@@ -111,40 +114,27 @@ generateTeam(playerTeam).then(generateTeam(computerTeam).then(function () {
             $("#teamSelection").css("visibility", "visible").addClass("fadeIn");
             activePlayerPokemon = playerTeam[0];
             activeComputerPokemon = computerTeam[0];
-            $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
+            $('#carouselActiveName').text(`
+                ${activePlayerPokemon.name}
+            `);
             $('.card-content').html(`
-<<<<<<< HEAD
-            <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-=======
-            <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
-            <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-            <p>ATK: ${activePlayerPokemon.attack}</p>
-            <p>DEF: ${activePlayerPokemon.defense}</p>
-            <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-            <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+                <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
+                <div id="stats-box">
+                    <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+                    <p>ATK: ${activePlayerPokemon.attack}</p>
+                    <p>DEF: ${activePlayerPokemon.defense}</p>
+                    <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+                    <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+                </div>
             `);
         }, 700);
     })
 }));
 
-<<<<<<< HEAD
-$(document).ready(function() {
-    $(".slider").slider();
-  });
-
-  
-     $('buttons-wrapper').on('click',function(){
-        $('document').reload();
-        console.log('something happened');
-     });
-=======
 $(document).ready(function () {
     $(".slider").slider();
 });
 
 $('buttons-wrapper').on('click', function () {
     $('document').reload();
-    console.log('something happened');
 });
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231

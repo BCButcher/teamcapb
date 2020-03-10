@@ -5,25 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <!-- Had to make sure to load jQuery BEFFORE materialize scripts so page would generate correctly -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="assets/styles/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-    <title>Pokesim</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <title>PokeSim</title>
 </head>
 
 <body>
     <container class="white" id="landingPage" style="height: 100%;">
         <div class="red darken-1" id="pkBallTop">
-            <h1 id="landingTitle">Pokemon Battle Simulator!</h1>
+            <h1 id="landingTitle">PokeSim!</h1>
         </div>
         <div class="grey darken-4" id="pkBallMid"></div>
         <div class="grey darken-4" id="pkBallCircleBack"></div>
@@ -31,7 +23,7 @@
 
     </container>
 
-    <div id="containAll" class="container">
+    <div id="containAll" class="container d-none">
 
         <div id="teamSelection" style="visibility: hidden;">
             <div class="valign-wrapper">
@@ -100,7 +92,7 @@
 
     <div id="endScreen" class="container hide">
         <div class="slider fullscreen">
-            <ul class="slides">
+            <!-- <ul class="slides">
                 <li>
                     <img src="https://images5.alphacoders.com/613/thumb-1920-613933.jpg" />
                     <div class="caption center-align">
@@ -138,16 +130,22 @@
                             A Pokemon Master!!!
                         </h1>
                     </div>
-                </li>   
-            </ul>
+                </li>
+            </ul> -->
             <div class="buttons-wrapper">
                 <div class="row center">
-                    <a onClick="reload" class="waves-effect waves-light red btn-large hoverable mg-rg"><i class="material-icons right">play_arrow</i>Restart</a>
+                    <a onClick="window.location.reload();"
+                        class="waves-effect waves-light red btn-large hoverable mg-rg"><i
+                            class="material-icons right">play_arrow</i>Restart?</a>
                 </div>
                 </button>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/scripts/script.js"></script>
     <script src="./assets/scripts/battleSys.js"></script>
 </body>

@@ -1,20 +1,12 @@
 var critMultiplier = 0.25;
 var allowPlayerInput = true;
-var audioAttack = document.createElement("audio");
-<<<<<<< HEAD
-audioAttack.setAttribute("src", "assets/musictones/Barrage_1hit.mp3");
-var audioBattle = document.createElement("audio");
-audioBattle.setAttribute("src", "assets/musictones/115-battlevstrainer.mp3");
-var audioEnd = document.createElement("audio");
-audioEnd.setAttribute("src", "assets/musictones/145-ending.mp3");
 
-=======
-audioAttack.setAttribute("src", "assets/Musictones/Barrage_1hit.mp3");
-var audioBattle = document.createElement("audio");
-audioBattle.setAttribute("src", "assets/Musictones/115-battlevstrainer.mp3");
-var audioEnd = document.createElement("audio");
-audioEnd.setAttribute("src", "assets/Musictones/145-ending.mp3");
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
+// var audioAttack = document.createElement("audio");
+// audioAttack.setAttribute("src", "assets/Musictones/Barrage_1hit.mp3");
+// var audioBattle = document.createElement("audio");
+// audioBattle.setAttribute("src", "assets/Musictones/115-battlevstrainer.mp3");
+// var audioEnd = document.createElement("audio");
+// audioEnd.setAttribute("src", "assets/Musictones/145-ending.mp3");
 
 // Primary attack function. Takes the attacking Pokemon, defending Pokemon, and the attack type
 function attackOpponent(attacker, defender, type) {
@@ -27,29 +19,32 @@ function attackOpponent(attacker, defender, type) {
 
   // Checks if the attack is a critical hit (6.25% chance)
   let isCrit = 0.0625 > Math.random();
+
   let damage = 0;
+
   // Total damage has a +/- 15% variability by making total damage random from 85% to 115%
   if (type == "normal") {
     damage = Math.round(
       (attacker.attack +
         attacker.attack * critMultiplier * isCrit -
         defender.defense) *
-        (Math.random() * 0.3 + 0.85)
+      (Math.random() * 0.3 + 0.85)
     );
   } else {
     damage = Math.round(
       (attacker.attackSp +
         attacker.attackSp * critMultiplier * isCrit -
         defender.defenseSp) *
-        (Math.random() * 0.3 + 0.85)
+      (Math.random() * 0.3 + 0.85)
     );
   }
 
   if (damage <= 0) {
-    damage = 1;
+    damage = 10;
   }
 
   defender.hpCurrent -= damage;
+  // FOR TESTING defender.hpCurrent -= 10000;
 
   // If the defending Pokemon faints, switch to a new Pokemon if available
   if (defender.hpCurrent <= 0) {
@@ -64,9 +59,9 @@ function attackOpponent(attacker, defender, type) {
       );
       numActiveComputerPokemon--;
       if (numActiveComputerPokemon > 0) {
-        setTimeout(function() {
+        setTimeout(function () {
           $("#compSpriteImg").addClass("slideDownFaint");
-          setTimeout(function() {
+          setTimeout(function () {
             switchCompActivePokemon(
               computerTeam,
               Math.floor(Math.random() * 6),
@@ -84,26 +79,30 @@ function attackOpponent(attacker, defender, type) {
         return;
       } else {
         playerWinToaster();
-        setTimeout(function() {
-            $("#battleContainer").addClass("hide");
-            $("#endScreen").removeClass("hide");
+        setTimeout(function () {
+          $("#battleContainer").addClass("hide");
+          $("#endScreen").removeClass("hide");
         }, 2000);
-        audioBattle.pause();
-        audioEnd.play();       
+
+        // AUDIO HERE
+        // audioBattle.pause();
+        // audioEnd.play();       
 
         return;
       }
     } else {
-        numActivePlayerPokemon--;
-        if (numActivePlayerPokemon <= 0){
-            setTimeout(function() {
-                $("#battleContainer").addClass("hide");
-                $("#endScreen").removeClass("hide");
-            }, 2000);
-            audioBattle.pause();
-            audioEnd.play();
-        }
-      setTimeout(function() {
+      numActivePlayerPokemon--;
+      if (numActivePlayerPokemon <= 0) {
+        setTimeout(function () {
+          $("#battleContainer").addClass("hide");
+          $("#endScreen").removeClass("hide");
+        }, 2000);
+
+        // AUDIO HERE
+        // audioBattle.pause();
+        // audioEnd.play();
+      }
+      setTimeout(function () {
         $(".carousel > .active").addClass("pkmnFainted");
         allowPlayerInput = true;
         $("#attackBtn").removeClass("disabled");
@@ -111,7 +110,7 @@ function attackOpponent(attacker, defender, type) {
         $("#switchBtn").removeClass("disabled");
         $("#runBtn").removeClass("disabled");
         $("#playerSpriteImg").addClass("slideDownFaint");
-        setTimeout(function() {
+        setTimeout(function () {
           refreshCarousel();
         }, 700);
       }, 1000);
@@ -133,11 +132,14 @@ function attackOpponent(attacker, defender, type) {
       "width",
       `${Math.round((defender.hpCurrent / defender.hp) * 100)}%`
     );
-    setTimeout(function() {
+    setTimeout(function () {
       $("#playerSpriteImg").removeClass("playerAttack");
       $("#compSpriteImg").addClass("computerAttack");
       attackOpponent(defender, attacker, attackType);
-      audioAttack.play();
+
+      // AUDIO HERE
+      // audioAttack.play();
+
     }, 1000);
 
     // Otherwise if the defender is the player's Pokemon, reenable input after taking damage
@@ -149,7 +151,7 @@ function attackOpponent(attacker, defender, type) {
       "width",
       `${Math.round((defender.hpCurrent / defender.hp) * 100)}%`
     );
-    setTimeout(function() {
+    setTimeout(function () {
       allowPlayerInput = true;
       $("#attackBtn").removeClass("disabled");
       $("#specialBtn").removeClass("disabled");
@@ -194,7 +196,7 @@ function setActivePlayerPokemonInfo(pokemonInfo) {
   $("#playerHPbar").css(
     "width",
     `${Math.round((pokemonInfo.hpCurrent / pokemonInfo.hp) * 100)}%`
-    );
+  );
 }
 
 // Set the active computer's Pokemon info
@@ -207,9 +209,9 @@ function setActiveComputerPokemonInfo(pokemonInfo) {
     `${Math.round((pokemonInfo.hpCurrent / pokemonInfo.hp) * 100)}%`
   );
   $('#compSpriteImg').removeClass('slideDownFaint').addClass('slideInFromRight');
-    setTimeout(function () {
-        $('#compSpriteImg').removeClass('slideInFromRight');
-    }, 1500)
+  setTimeout(function () {
+    $('#compSpriteImg').removeClass('slideInFromRight');
+  }, 1500)
 }
 
 // Show the carousel again when called in battle
@@ -220,54 +222,55 @@ function refreshCarousel() {
   $("#battleContainer").addClass("hide");
   $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
   $(".card-content").html(`
-<<<<<<< HEAD
-    <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-=======
-    <p id="flavorText"  style="float: right;">"${activePlayerPokemon.flavorText}"</p>
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
-    <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-    <p>ATK: ${activePlayerPokemon.attack}</p>
-    <p>DEF: ${activePlayerPokemon.defense}</p>
-    <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-    <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+    <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
+    <div id="stats-box">
+      <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+      <p>ATK: ${activePlayerPokemon.attack}</p>
+      <p>DEF: ${activePlayerPokemon.defense}</p>
+      <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+      <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+    </div>
     `);
 }
 
 // Wait for a delay, then call the update
 function updateCurrentCarouselInfo(delay) {
-  setTimeout(function() {
+  setTimeout(function () {
     let currentCarousel = $(".carousel > .active");
     let carouselIndex = $(".carousel-item").index(currentCarousel);
     switchPlayerActivePokemon(carouselIndex);
     $('#carouselActiveName').text(`${activePlayerPokemon.name}`);
     $(".card-content").html(`
-<<<<<<< HEAD
-        <p style="float: right;">"${activePlayerPokemon.flavorText}"</p>
-=======
-        <p id="flavorText" style="float: right;">"${activePlayerPokemon.flavorText}"</p>
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
-        <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
-        <p>ATK: ${activePlayerPokemon.attack}</p>
-        <p>DEF: ${activePlayerPokemon.defense}</p>
-        <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
-        <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+        <p id="flavorText">"${activePlayerPokemon.flavorText}"</p>
+        <div id="stats-box">
+          <p>HP: ${activePlayerPokemon.hpCurrent}/${activePlayerPokemon.hp}</p>
+          <p>ATK: ${activePlayerPokemon.attack}</p>
+          <p>DEF: ${activePlayerPokemon.defense}</p>
+          <p>SP. ATK: ${activePlayerPokemon.attackSp}</p>
+          <p>SP. DEF: ${activePlayerPokemon.defenseSp}</p>
+        </div>
         `);
   }, delay);
 }
 
 // set ActivePlayerPokemon to be equal to carousel-item active when the mouse is held down or when mouse is released
-$("#playerCarousel").mousedown(function() {
-  updateCurrentCarouselInfo(1000);
+// $("#playerCarousel").mousedown(function () {
+//   updateCurrentCarouselInfo(600);
+// });
+
+$("#playerCarousel").mouseup(function () {
+  updateCurrentCarouselInfo(1600);
 });
 
-$("#playerCarousel").mouseup(function() {
-  updateCurrentCarouselInfo(600);
+$("#playerCarousel").on("touchend", function () {
+  updateCurrentCarouselInfo(1600);
 });
 
 // Select the Pokemon for battle if they're usable
-$("#pokemonSelectBtn").click(function() {
+$("#pokemonSelectBtn").click(function () {
   if (activePlayerPokemon.status == "fainted") {
     faintedToaster();
+    // This Pokemon is unable to battle!
     return;
   }
 
@@ -276,23 +279,27 @@ $("#pokemonSelectBtn").click(function() {
     .addClass("slideOut");
   setActivePlayerPokemonInfo(activePlayerPokemon);
   setActiveComputerPokemonInfo(activeComputerPokemon);
-  audioStart.pause();
+  // AUDIO HERE
+  // audioStart.pause();
 
-  setTimeout(function() {
+  setTimeout(function () {
     $("#teamSelection").addClass("hide");
     $("#battleContainer").removeClass("hide");
+    // Fainted pokemon img removed, new pokemon img slides in
     $("#playerSpriteImg").removeClass('slideDownFaint').addClass("slideInFromLeft");
-    
-    setTimeout(function() {
-      audioBattle.play();
+
+    setTimeout(function () {
+      // AUDIO HERE
+      // audioBattle.play();
       $("#playerSpriteImg")
         .removeClass("slideInFromLeft")
+        // Now starts bob animation, after slideInFromLeft has played
         .addClass("idleBob");
     }, 700);
   }, 700);
 });
 
-$("#attackBtn").on("click", function() {
+$("#attackBtn").on("click", function () {
   if (allowPlayerInput) {
     allowPlayerInput = false;
     $("#attackBtn").addClass("disabled");
@@ -304,11 +311,12 @@ $("#attackBtn").on("click", function() {
       $("#playerSpriteImg").addClass("playerAttack");
     }, 100);
     attackOpponent(activePlayerPokemon, activeComputerPokemon, "normal");
-    audioAttack.play();
+    // AUDIO HERE
+    // audioAttack.play();
   }
 });
 
-$("#specialBtn").on("click", function() {
+$("#specialBtn").on("click", function () {
   if (allowPlayerInput) {
     allowPlayerInput = false;
     $("#attackBtn").addClass("disabled");
@@ -323,7 +331,7 @@ $("#specialBtn").on("click", function() {
   }
 });
 
-$("#switchBtn").on("click", function() {
+$("#switchBtn").on("click", function () {
   if (allowPlayerInput) {
     $("#playerSpriteImg").removeClass("idleBob");
     refreshCarousel();
@@ -332,66 +340,25 @@ $("#switchBtn").on("click", function() {
 
 // Toasters
 function damageToaster(target, damage) {
-    toastr.info(`${target} took ${damage} damage!`);
-    toastr.options = {
-      closeButton: false,
-      debug: false,
-      newestOnTop: false,
-      progressBar: false,
-      positionClass: "toast-top-center",
-      preventDuplicates: false,
-      onclick: null,
-      showDuration: "300",
-      hideDuration: "300",
-      timeOut: "1000",
-      showEasing: "swing",
-      hideEasing: "linear",
-      showMethod: "fadeIn",
-      hideMethod: "fadeOut"
-    };
-  }
-  
-<<<<<<< HEAD
-  function playerWinToaster() {
-    toastr.info(`You won!`);
-    toastr.options = {
-      closeButton: false,
-      debug: false,
-      newestOnTop: false,
-      progressBar: false,
-      positionClass: "toast-top-center",
-      preventDuplicates: false,
-      onclick: null,
-      showDuration: "300",
-      hideDuration: "300",
-      timeOut: "1000",
-      showEasing: "swing",
-      hideEasing: "linear",
-      showMethod: "fadeIn",
-      hideMethod: "fadeOut"
-    };
-  }
-  
-  function faintedToaster() {
-    toastr.info(`This Pokemon is unable to battle!`);
-    toastr.options = {
-      closeButton: false,
-      debug: false,
-      newestOnTop: false,
-      progressBar: false,
-      positionClass: "toast-top-center",
-      preventDuplicates: false,
-      onclick: null,
-      showDuration: "300",
-      hideDuration: "300",
-      timeOut: "1000",
-      showEasing: "swing",
-      hideEasing: "linear",
-      showMethod: "fadeIn",
-      hideMethod: "fadeOut"
-    };
-  }
-=======
+  toastr.info(`${target} took ${damage} damage!`);
+  toastr.options = {
+    closeButton: false,
+    debug: false,
+    newestOnTop: false,
+    progressBar: false,
+    positionClass: "toast-top-center",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "300",
+    timeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+  };
+}
+
 function playerWinToaster() {
   toastr.info(`You won!`);
   toastr.options = {
@@ -411,7 +378,7 @@ function playerWinToaster() {
     hideMethod: "fadeOut"
   };
 }
-  
+
 function faintedToaster() {
   toastr.info(`This Pokemon is unable to battle!`);
   toastr.options = {
@@ -431,4 +398,3 @@ function faintedToaster() {
     hideMethod: "fadeOut"
   };
 }
->>>>>>> a4784fc84542452c549c12e7d956cc8ebd4e4231
