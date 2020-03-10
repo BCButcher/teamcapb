@@ -197,16 +197,16 @@ h1 {
 }
 
 #compSprite {
-    width: 250px;
+    /* width: 250px; */
     float: right;
     display: block;
     overflow: hidden;
 }
 
 #compSpriteImg {
-    height: 200px;
+    height: 125px;
     position: relative;
-    right: -40px;
+    /* right: -40px; */
 }
 
 /* Player  Battle Boxes */
@@ -221,17 +221,18 @@ h1 {
 }
 
 #playerSprite {
-    height: 300px;
-    width: 300px;
+    /* height: 300px; */
+    /* width: 300px; */
     display: block;
     overflow: hidden;
 }
 
 #playerSpriteImg {
-    height: 300px;
+    height: 200px;
     position: relative;
     bottom: 0;
     margin-bottom: -40px;
+    left: -30px;
 }
 
 #battleButtons {

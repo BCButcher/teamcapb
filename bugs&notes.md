@@ -23,3 +23,13 @@ Changed delay to 1500, still not getting reliable carousel info updates
 
 Click's + taps inside #playerCarousel cause erratic movement of carousel items
 
+
+
+
+Changelog
+
+Mar 10
+Changed battlebuttons to flexbox, space evenly, and small margin. Also made run button match width of special attack button for nice even looking display
+
+Mar 10
+Updated pokemon battle sprite sizes - Previously much too large - Still work to do on responsive sizing and positioning
