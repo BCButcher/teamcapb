@@ -19,5 +19,7 @@ $("#playerCarousel").on("touchend", function () {
 });
 
 
-<!-- # Bug #02  -->
+# Bug #02 
+
+Click's + taps inside #playerCarousel cause erratic movement of carousel items
 
